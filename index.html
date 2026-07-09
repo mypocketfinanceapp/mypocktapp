@@ -3,193 +3,645 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Pockt Finance</title>
+  <title>Pockt Finance - Admin Backend</title>
+  
+  <!-- Tailwind CSS v4 -->
   <script src="./tailwindcss.js"></script>
+  
+  <!-- Iconify Web Component -->
   <script src="./iconify-icon.min.js"></script>
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
+
   <style>
     body {
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      color: #1e293b;
+      color: #17191C;
+      background-color: #ffffff;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: "Plus Jakarta Sans", "Outfit", ui-sans-serif, system-ui, sans-serif;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #0B2545;
     }
 
-    * {
-      transition: all 0.2s ease;
+    .font-display {
+      font-family: "Plus Jakarta Sans", sans-serif;
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
+    .font-numeric {
+      font-family: "Outfit", sans-serif;
+      letter-spacing: -0.01em;
     }
 
-    .glass-card {
-      background: rgba(255, 255, 255, 1);
-      box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.12);
-      border: 1px solid #F4F4F6;
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    .input-focus-ring {
-      @apply focus-within:ring-2 focus-within:ring-[#17A2A8]/20 focus-within:border-[#17A2A8] outline-none;
+    .sidebar-shadow {
+      box-shadow: -4px 0 24px -4px rgba(0, 0, 0, 0.05);
     }
 
-    .auth-gradient-bg {
-      background: #F9FAFA;
+    .card-hover-effect {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    input::placeholder {
-      color: #94a3b8;
-      font-size: 0.875rem;
+    .card-hover-effect:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
     }
 
-    button:active {
-      transform: scale(0.98);
+    button, a, input, select {
+      transition: all 0.2s ease-in-out;
+    }
+
+    ::selection {
+      background-color: rgba(23, 162, 168, 0.2);
+      color: #17A2A8;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body class="auth-gradient-bg min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 w-full bg-white/60 backdrop-blur-md border-b border-[#F4F4F6] px-4 md:px-16 h-16 flex items-center justify-between">
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-50 w-full h-[65px] glass-panel border-b border-[#F4F4F6] px-4 lg:px-16 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
-        <img src="./assets/IMG_1.svg" alt="Logo Icon" class="w-5.5 h-5.5">
+        <img src="./assets/IMG_1.svg" class="w-[22px] h-[22px]" alt="Logo Icon">
       </div>
       <div class="flex flex-col">
         <span class="text-[20px] font-bold leading-none text-[#0B2545]">Pockt Finance</span>
         <span class="text-[10px] font-medium text-[#353940] tracking-tight">The pocket-sized CFO.</span>
       </div>
     </div>
-    
-    <div class="flex items-center gap-2 md:gap-4">
-      <button class="hidden sm:block text-sm font-medium text-[#17191C] px-4 py-2 hover:bg-gray-50 rounded-lg">Log in</button>
-      <button class="bg-[#17A2A8] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#148e93] shadow-sm">Open Account</button>
-      <button class="p-2 text-[#17191C] hover:bg-gray-50 rounded-lg">
-        <img src="./assets/IMG_2.svg" alt="Help" class="w-5 h-5">
+
+    <nav class="hidden lg:flex items-center gap-2 ml-12">
+      <button class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-100">
+        <img src="./assets/IMG_2.svg" class="w-4 h-4" alt="Dashboard"> Dashboard
       </button>
+      <button class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-100">
+        <img src="./assets/IMG_3.svg" class="w-4 h-4" alt="Move Money"> Move Money
+      </button>
+      <button class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-100">
+        <img src="./assets/IMG_4.svg" class="w-4 h-4" alt="Cards"> Cards
+      </button>
+      <button class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-100">
+        <img src="./assets/IMG_5.svg" class="w-4 h-4" alt="Statements"> Statements
+      </button>
+    </nav>
+
+    <div class="flex items-center gap-4 ml-auto">
+      <div class="hidden md:flex items-center bg-[#F4F4F6] rounded-lg px-3 py-1.5 w-64">
+        <img src="./assets/IMG_7.svg" class="w-4 h-4 mr-2 opacity-60" alt="Search">
+        <input type="text" placeholder="Search transactions..." class="bg-transparent border-none outline-none text-sm w-full placeholder:text-[#353940]">
+      </div>
+      
+      <div class="relative">
+        <img src="./assets/IMG_8.svg" class="w-5 h-5 cursor-pointer" alt="Notifications">
+        <div class="absolute top-0 right-0 w-2 h-2 bg-[#DC3545] border-2 border-white rounded-full"></div>
+      </div>
+
+      <div class="h-8 w-[1px] bg-[#F4F4F6] mx-2 hidden sm:block"></div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <p class="text-sm font-medium leading-none">Acme Corp</p>
+          <p class="text-[12px] text-[#353940]">Admin</p>
+        </div>
+        <div class="relative">
+          <img src="./assets/IMG_6.webp" class="w-9 h-9 rounded-full object-cover border border-gray-200" alt="User Avatar">
+          <div class="absolute bottom-0 right-0 w-[9px] h-[9px] bg-[#1dd75b] border-[1.5px] border-white rounded-full"></div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
-    <div class="w-full max-w-[450px] glass-card rounded-xl p-6 md:p-8">
-      <h1 class="text-2xl font-bold mb-2">Welcome Back</h1>
-      <p class="text-sm text-[#353940] mb-8">Access your Pockt Finance business dashboard</p>
-
-      <form class="space-y-5">
-        <!-- Email Field -->
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-[#17191C]">Work Email</label>
-          <div class="relative flex items-center border border-[#DEDFE3] rounded-lg px-3 py-2.5 bg-white input-focus-ring">
-            <img src="./assets/IMG_3.svg" alt="Mail" class="w-4 h-4 mr-2.5">
-            <input type="email" placeholder="name@company.com" class="w-full text-sm outline-none bg-transparent text-[#353940]">
-          </div>
-        </div>
-
-        <!-- Password Field -->
-        <div class="space-y-2">
-          <div class="flex justify-between items-center">
-            <label class="text-sm font-medium text-[#17191C]">Password</label>
-            <button type="button" class="text-xs text-[#17A2A8] hover:underline">Forgot password?</button>
-          </div>
-          <div class="relative flex items-center border border-[#DEDFE3] rounded-lg px-3 py-2.5 bg-white input-focus-ring">
-            <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4 mr-2.5">
-            <input type="password" placeholder="••••••••" class="w-full text-sm outline-none bg-transparent text-[#353940]">
-          </div>
-        </div>
-
-        <!-- Remember Device -->
-        <div class="flex items-start gap-2 py-1">
-          <input type="checkbox" id="remember" class="mt-1 w-4 h-4 border-[#565e6c] rounded accent-[#17A2A8]">
-          <label for="remember" class="text-sm font-medium text-[#353940] cursor-pointer">Remember this device for 30 days</label>
-        </div>
-
-        <!-- Sign In Button -->
-        <button type="submit" class="w-full bg-[#17A2A8] text-white font-semibold py-3 rounded-lg shadow-md hover:bg-[#148e93] active:scale-[0.99]">
-          Sign In
-        </button>
-      </form>
-
-      <!-- Divider -->
-      <div class="relative my-8">
-        <div class="absolute inset-0 flex items-center">
-          <div class="w-full border-t border-[#F4F4F6]"></div>
-        </div>
-        <div class="relative flex justify-center">
-          <span class="bg-white px-3 text-[12px] uppercase tracking-wider text-[#353940]">Or continue with</span>
-        </div>
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex flex-col w-64 bg-[#F9FAFA] border-r border-[#F4F4F6] shrink-0">
+      <div class="p-6 flex-1">
+        <p class="text-[12px] font-semibold text-[#353940] tracking-widest uppercase mb-4">Admin Console</p>
+        <nav class="space-y-1">
+          <button class="w-full flex items-center gap-3 px-4 py-2.5 bg-[#f3f4f6] rounded-lg text-sm font-medium text-[#1E2128]">
+            <img src="./assets/IMG_2.svg" class="w-4 h-4" alt="Admin Dashboard"> Admin Dashboard
+          </button>
+          <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 rounded-lg text-sm font-medium text-[#1E2128]">
+            <img src="./assets/IMG_9.svg" class="w-4 h-4" alt="Businesses"> Businesses
+          </button>
+          <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 rounded-lg text-sm font-medium text-[#1E2128]">
+            <img src="./assets/IMG_10.svg" class="w-4 h-4" alt="Users"> Users
+          </button>
+          <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 rounded-lg text-sm font-medium text-[#1E2128]">
+            <img src="./assets/IMG_11.svg" class="w-4 h-4" alt="Fraud & Risks"> Fraud & Risks
+          </button>
+          <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 rounded-lg text-sm font-medium text-[#1E2128]">
+            <img src="./assets/IMG_12.svg" class="w-4 h-4" alt="Settings"> Settings
+          </button>
+        </nav>
       </div>
-
-      <!-- Social Login -->
-      <div class="grid grid-cols-2 gap-4">
-        <button class="flex items-center justify-center gap-2 border border-[#DEDFE3] rounded-lg py-3 hover:bg-gray-50">
-          <img src="./assets/IMG_5.webp" alt="Google" class="w-4 h-4">
-          <span class="text-sm font-medium text-[#17191C]">Google</span>
-        </button>
-        <button class="flex items-center justify-center gap-2 border border-[#DEDFE3] rounded-lg py-3 hover:bg-gray-50">
-          <img src="./assets/IMG_6.webp" alt="Microsoft" class="w-4 h-4">
-          <span class="text-sm font-medium text-[#17191C]">Microsoft</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Bottom Links -->
-    <div class="mt-8 text-center space-y-4">
-      <p class="text-sm text-[#353940]">
-        Don't have a business account yet? 
-        <button class="text-[#17A2A8] font-semibold hover:underline ml-1">Get Started for Free</button>
-      </p>
       
-      <div class="flex items-center justify-center gap-6 opacity-60">
-        <div class="flex items-center gap-1.5">
-          <img src="./assets/IMG_7.svg" alt="Shield" class="w-3 h-3">
-          <span class="text-[12px] text-[#353940]">SOC2 Compliant</span>
+      <div class="p-4 border-t border-[#F4F4F6]">
+        <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 rounded-lg text-sm font-medium text-[#353940]">
+          <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Support"> Support
+        </button>
+        <button class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 rounded-lg text-sm font-medium text-[#DC3545]">
+          <img src="./assets/IMG_14.svg" class="w-4 h-4" alt="Logout"> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-[#F9FAFA]">
+      
+      <!-- Dashboard Content -->
+      <div class="flex-1 overflow-y-auto p-4 lg:p-8 no-scrollbar">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h1 class="text-2xl font-bold text-[#17191C] tracking-tight">Admin Backend</h1>
+            <p class="text-sm text-[#353940]">System oversight and business investigation console.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="flex items-center gap-2 px-4 py-2 bg-white border border-[#DEDFE3] rounded-lg text-sm font-medium shadow-sm hover:bg-gray-50">
+              <img src="./assets/IMG_15.svg" class="w-4 h-4" alt="Audit Logs"> View Audit Logs
+            </button>
+            <button class="px-4 py-2 bg-[#0B2545] text-white rounded-lg text-sm font-medium shadow-sm hover:bg-[#081b33]">
+              System Report
+            </button>
+          </div>
         </div>
-        <div class="flex items-center gap-1.5">
-          <img src="./assets/IMG_4.svg" alt="Lock" class="w-3 h-3">
-          <span class="text-[12px] text-[#353940]">256-bit Encryption</span>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+          <!-- Stat Card 1 -->
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 relative card-hover-effect">
+            <p class="text-[12px] font-semibold text-[#353940] tracking-wider uppercase mb-2">Total 24h Volume</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="text-2xl font-bold font-numeric">$1,248,302</h3>
+                <div class="flex items-center gap-1 mt-1 text-[#17191C]">
+                  <img src="./assets/IMG_16.svg" class="w-3 h-3" alt="Up">
+                  <span class="text-[12px] font-semibold">+12.5%</span>
+                </div>
+              </div>
+              <div class="w-11 h-11 bg-[#F4F4F6] rounded-xl flex items-center justify-center">
+                <img src="./assets/IMG_16.svg" class="w-5 h-5" alt="Arrow">
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div class="bg-[#FFFBF0] p-5 rounded-xl shadow-sm border border-[#F4F4F6] relative card-hover-effect">
+            <p class="text-[12px] font-semibold text-[#353940] tracking-wider uppercase mb-2">Pending Verification</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="text-2xl font-bold font-numeric text-[#4B3902]">12</h3>
+                <div class="flex items-center gap-1 mt-1 text-[#DC3545]">
+                  <img src="./assets/IMG_18.svg" class="w-3 h-3" alt="Down">
+                  <span class="text-[12px] font-semibold">+3 new</span>
+                </div>
+              </div>
+              <div class="w-11 h-11 bg-white/50 rounded-xl flex items-center justify-center">
+                <img src="./assets/IMG_17.svg" class="w-5 h-5 text-[#4B3902]" alt="User Check">
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 3 -->
+          <div class="bg-[#DC3545] p-5 rounded-xl shadow-md relative card-hover-effect">
+            <p class="text-[12px] font-semibold text-white/80 tracking-wider uppercase mb-2">Active Fraud Alerts</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="text-2xl font-bold font-numeric text-white">03</h3>
+                <div class="flex items-center gap-1 mt-1 text-white">
+                  <img src="./assets/IMG_16.svg" class="w-3 h-3 brightness-0 invert" alt="Up">
+                  <span class="text-[12px] font-semibold">-2 this week</span>
+                </div>
+              </div>
+              <div class="w-11 h-11 bg-white/20 rounded-xl flex items-center justify-center">
+                <img src="./assets/IMG_19.svg" class="w-5 h-5 brightness-0 invert" alt="Alert">
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 4 -->
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 relative card-hover-effect">
+            <p class="text-[12px] font-semibold text-[#353940] tracking-wider uppercase mb-2">New Businesses</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="text-2xl font-bold font-numeric">42</h3>
+                <div class="flex items-center gap-1 mt-1 text-[#17191C]">
+                  <img src="./assets/IMG_16.svg" class="w-3 h-3" alt="Up">
+                  <span class="text-[12px] font-semibold">+8%</span>
+                </div>
+              </div>
+              <div class="w-11 h-11 bg-[#F4F4F6] rounded-xl flex items-center justify-center">
+                <img src="./assets/IMG_20.svg" class="w-5 h-5" alt="Building">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <!-- Table Section -->
+          <div class="xl:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+            <div class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight">Recent Businesses</h2>
+                <p class="text-sm text-[#353940]">Managing 1,240 verified businesses globally.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="relative flex items-center bg-white border border-[#DEDFE3] rounded-lg px-3 py-1.5 w-full sm:w-48">
+                  <img src="./assets/IMG_7.svg" class="w-4 h-4 mr-2 opacity-60" alt="Search">
+                  <input type="text" placeholder="Search records..." class="bg-transparent border-none outline-none text-sm w-full">
+                </div>
+                <button class="flex items-center gap-2 px-4 py-1.5 border border-[#DEDFE3] rounded-lg text-sm font-medium hover:bg-gray-50">
+                  <img src="./assets/IMG_21.svg" class="w-4 h-4" alt="Filter"> Filter
+                </button>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-[#F4F4F6]/50 text-[#353940] text-sm font-medium">
+                    <th class="px-6 py-3 border-b border-[#F4F4F6]">Business & Owner</th>
+                    <th class="px-6 py-3 border-b border-[#F4F4F6]">Verification</th>
+                    <th class="px-6 py-3 border-b border-[#F4F4F6]">Total Assets</th>
+                    <th class="px-6 py-3 border-b border-[#F4F4F6]">Risk Score</th>
+                    <th class="px-6 py-3 border-b border-[#F4F4F6] text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <!-- Row 1 (Selected) -->
+                  <tr class="bg-[#F2F7FD]/40 border-l-2 border-[#17A2A8]">
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_22.webp" class="w-8 h-8 rounded-full bg-[#e5f8fa]" alt="Acme">
+                        <div>
+                          <p class="font-semibold">Acme Corp</p>
+                          <p class="text-[12px] text-[#353940]">Sarah Jenkins</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold uppercase">Pending</span>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] font-display font-medium">$1.2M</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">Med</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                  <!-- Row 2 -->
+                  <tr>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_24.webp" class="w-8 h-8 rounded-full bg-[#f8f3e6]" alt="Logistics">
+                        <div>
+                          <p class="font-semibold">Global Logistics</p>
+                          <p class="text-[12px] text-[#353940]">Mark Russo</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold uppercase">Verified</span>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] font-display font-medium">$840k</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">Low</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                  <!-- Row 3 -->
+                  <tr>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_25.webp" class="w-8 h-8 rounded-full bg-[#f8f5e6]" alt="Neon">
+                        <div>
+                          <p class="font-semibold">Neon Studio</p>
+                          <p class="text-[12px] text-[#353940]">Elena Frost</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <span class="px-3 py-1 bg-[#DC3545] text-white rounded-full text-[10px] font-bold uppercase">Flagged</span>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] font-display font-medium">$210k</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-2">
+                        <div class="w-12 h-1.5 bg-[#DC3545]/20 rounded-full overflow-hidden">
+                          <div class="w-full h-full bg-[#DC3545]"></div>
+                        </div>
+                        <span>High</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                  <!-- Row 4 -->
+                  <tr>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_26.webp" class="w-8 h-8 rounded-full bg-[#e1fdea]" alt="TechFlow">
+                        <div>
+                          <p class="font-semibold">TechFlow Inc</p>
+                          <p class="text-[12px] text-[#353940]">David Chen</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold uppercase">Verified</span>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] font-display font-medium">$4.1M</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">Low</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                  <!-- Row 5 -->
+                  <tr>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_27.webp" class="w-8 h-8 rounded-full bg-[#fae7ef]" alt="Skyline">
+                        <div>
+                          <p class="font-semibold">Skyline Realty</p>
+                          <p class="text-[12px] text-[#353940]">Olivia Pope</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">
+                      <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold uppercase">Pending</span>
+                    </td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] font-display font-medium">$1.5M</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6]">Med</td>
+                    <td class="px-6 py-4 border-b border-[#F4F4F6] text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                  <!-- Row 6 -->
+                  <tr>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <img src="./assets/IMG_28.webp" class="w-8 h-8 rounded-full bg-[#ecfbe2]" alt="PaperClip">
+                        <div>
+                          <p class="font-semibold">PaperClip Ltd</p>
+                          <p class="text-[12px] text-[#353940]">Bill Lumbergh</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold uppercase">Verified</span>
+                    </td>
+                    <td class="px-6 py-4 font-display font-medium">$12k</td>
+                    <td class="px-6 py-4">Low</td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="p-1 hover:bg-gray-200 rounded"><img src="./assets/IMG_23.svg" class="w-4 h-4" alt="More"></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-4 border-t border-[#F4F4F6] flex items-center justify-between mt-auto">
+              <span class="text-[12px] text-[#353940]">Showing 6 of 1,240 results</span>
+              <div class="flex gap-2">
+                <button class="px-3 py-1 border border-[#DEDFE3] rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">Previous</button>
+                <button class="px-3 py-1 border border-[#DEDFE3] rounded-lg text-sm font-medium hover:bg-gray-50">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Feed Section -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-1">
+                <h2 class="text-lg font-semibold tracking-tight">System Feed</h2>
+                <span class="px-2 py-0.5 border border-[#F4F4F6] rounded-full text-[10px] font-bold text-[#17191C] opacity-60">LIVE</span>
+              </div>
+              <p class="text-sm text-[#353940]">Global real-time transactions.</p>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-6 no-scrollbar">
+              <div class="space-y-6 pb-6">
+                <!-- Feed Item 1 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">Acme Corp</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">Just Now</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">+$12,400.00</span>
+                </div>
+                <!-- Feed Item 2 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-[#DC3545] rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">Neon Studio</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">4m ago</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">-$1,200.00</span>
+                </div>
+                <!-- Feed Item 3 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">Global Logistics</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">12m ago</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">+$450.00</span>
+                </div>
+                <!-- Feed Item 4 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">Skyline Realty</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">15m ago</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">+$8,900.00</span>
+                </div>
+                <!-- Feed Item 5 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-[#DC3545] rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">TechFlow Inc</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">22m ago</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">-$22,000.00</span>
+                </div>
+                <!-- Feed Item 6 -->
+                <div class="flex justify-between items-start">
+                  <div class="flex gap-3">
+                    <div class="w-2 h-2 mt-2 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="text-sm font-semibold">Acme Corp</p>
+                      <p class="text-[10px] text-[#353940] uppercase tracking-widest">31m ago</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-[#17191C]">+$3,500.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#F4F4F6]/20 border-t border-[#F4F4F6]">
+              <button class="w-full flex items-center justify-center gap-2 py-2.5 text-[12px] font-bold text-[#0B2545] hover:bg-gray-100 rounded-lg">
+                Open Full Monitor <img src="./assets/IMG_16.svg" class="w-3 h-3" alt="Open">
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+
+      <!-- Investigation Panel (Right Sidebar) -->
+      <aside class="w-full lg:w-[400px] bg-white border-l border-[#F4F4F6] flex flex-col shrink-0 relative sidebar-shadow">
+        <!-- Panel Toggle Button (Desktop) -->
+        <button class="absolute top-6 -left-5 w-10 h-10 bg-[#F4F4F6] border border-[#F4F4F6] rounded-full shadow-lg hidden lg:flex items-center justify-center z-10">
+          <img src="./assets/IMG_18.svg" class="w-4 h-4 rotate-90" alt="Toggle">
+        </button>
+
+        <!-- Panel Header -->
+        <div class="p-6 bg-[#F2F7FD]/50 border-b border-[#F4F4F6]">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-4">
+              <img src="./assets/IMG_29.webp" class="w-10 h-10 rounded-full bg-[#f4fad3]" alt="Acme">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight">Acme Corp</h2>
+                <div class="flex items-center gap-1 text-sm text-[#353940]">
+                  <img src="./assets/IMG_20.svg" class="w-3 h-3" alt="ID">
+                  <span>ID: P-99201-X</span>
+                </div>
+              </div>
+            </div>
+            <span class="px-3 py-0.5 border border-[#F4F4F6] rounded-full text-[12px] font-bold">Investigation</span>
+          </div>
+        </div>
+
+        <!-- Panel Content -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar">
+          <!-- Business Health -->
+          <section>
+            <h3 class="text-[12px] font-bold text-[#353940] tracking-[1.2px] uppercase mb-4">Business Health</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-3 bg-[#F4F4F6]/30 border border-[#F4F4F6] rounded-xl">
+                <p class="text-[10px] text-[#353940] mb-1">Total Inflow</p>
+                <p class="text-base font-bold">$428.5k</p>
+              </div>
+              <div class="p-3 bg-[#F4F4F6]/30 border border-[#F4F4F6] rounded-xl">
+                <p class="text-[10px] text-[#353940] mb-1">Active Cards</p>
+                <p class="text-base font-bold">12</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- KYB Verification -->
+          <section>
+            <h3 class="text-[12px] font-bold text-[#353940] tracking-[1.2px] uppercase mb-4">KYB Verification</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3 border border-[#F4F4F6] rounded-lg">
+                <div class="flex items-center gap-2">
+                  <img src="./assets/IMG_30.svg" class="w-4 h-4 text-green-500" alt="Check">
+                  <span class="text-sm">Certificate of Inc.</span>
+                </div>
+                <button class="text-[12px] font-medium hover:underline">View</button>
+              </div>
+              <div class="flex items-center justify-between p-3 border border-[#F4F4F6] rounded-lg">
+                <div class="flex items-center gap-2">
+                  <img src="./assets/IMG_31.svg" class="w-4 h-4 text-amber-500" alt="Alert">
+                  <span class="text-sm">Proof of Address</span>
+                </div>
+                <button class="text-[12px] font-medium hover:underline">Verify</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent Activity Log -->
+          <section>
+            <h3 class="text-[12px] font-bold text-[#353940] tracking-[1.2px] uppercase mb-4">Recent Activity Log</h3>
+            <div class="relative pl-4 space-y-6 border-l-4 border-[#F4F4F6]">
+              <div class="relative">
+                <div class="flex justify-between items-start">
+                  <p class="text-[12px] font-semibold">Wire Transfer Attempt</p>
+                  <span class="text-[12px] text-[#353940]">2h ago</span>
+                </div>
+                <p class="text-[12px] font-medium text-[#DC3545]">Blocked</p>
+              </div>
+              <div class="relative">
+                <div class="flex justify-between items-start">
+                  <p class="text-[12px] font-semibold">Card Limit Increased</p>
+                  <span class="text-[12px] text-[#353940]">5h ago</span>
+                </div>
+                <p class="text-[12px] font-medium">Admin (Felix)</p>
+              </div>
+              <div class="relative">
+                <div class="flex justify-between items-start">
+                  <p class="text-[12px] font-semibold">New User Added</p>
+                  <span class="text-[12px] text-[#353940]">1d ago</span>
+                </div>
+                <p class="text-[12px] font-medium">Success</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Panel Actions -->
+        <div class="p-6 bg-[#F4F4F6]/30 border-t border-[#F4F4F6] space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <button class="py-2.5 bg-[#17A2A8] text-white rounded-lg text-sm font-medium shadow-sm hover:bg-[#148e93]">Approve Account</button>
+            <button class="py-2.5 bg-white border border-[#DC3545] text-[#DC3545] rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-red-50">
+              <img src="./assets/IMG_32.svg" class="w-4 h-4" alt="Flag"> Flag Risk
+            </button>
+          </div>
+          <button class="w-full py-2.5 bg-white border border-[#0B2545] text-[#17191C] rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-50">
+            <img src="./assets/IMG_33.svg" class="w-4 h-4" alt="Restrict"> Restrict Capabilities
+          </button>
+        </div>
+      </aside>
+    </main>
+  </div>
 
   <!-- Footer -->
-  <footer class="w-full bg-white border-t border-[#F4F4F6] px-4 md:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8 text-[12px] text-[#353940]">
+  <footer class="w-full h-[65px] border-t border-[#F4F4F6] px-4 lg:px-16 flex items-center justify-between bg-white shrink-0">
+    <div class="flex items-center gap-6 text-[12px] text-[#353940]">
       <span>© 2024 Pockt Finance Inc.</span>
-      <a href="#" class="hover:text-[#17A2A8]">Terms & Privacy</a>
-      <a href="#" class="hover:text-[#17A2A8]">GDPR</a>
-      <a href="#" class="hover:text-[#17A2A8]">Security</a>
+      <a href="#" class="hover:underline">Terms & Privacy</a>
+      <a href="#" class="hover:underline">GDPR</a>
+      <a href="#" class="hover:underline">Security</a>
     </div>
     
-    <div class="flex items-center gap-4 text-[12px] text-[#353940]">
-      <div class="flex items-center gap-1.5 cursor-pointer hover:text-[#17A2A8]">
-        <img src="./assets/IMG_8.svg" alt="Globe" class="w-3 h-3">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 text-[12px] text-[#353940]">
+        <img src="./assets/IMG_9.svg" class="w-3 h-3" alt="Globe">
         <span>United States (English)</span>
-        <img src="./assets/IMG_9.svg" alt="Chevron" class="w-3 h-3">
+        <img src="./assets/IMG_34.svg" class="w-3 h-3" alt="Down">
       </div>
-      <span class="opacity-30 hidden sm:block">|</span>
-      <span class="italic font-medium text-[#17A2A8] hidden sm:block">The pocket-sized CFO.</span>
+      <span class="text-[#353940]/50">|</span>
+      <span class="text-[12px] font-medium text-[#17A2A8] italic">The pocket-sized CFO.</span>
     </div>
   </footer>
 

@@ -3,271 +3,479 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In - Pockt Finance</title>
+  <title>Account Statements - Pockt Finance</title>
   
   <!-- Tailwind CSS v4 -->
   <script src="./tailwindcss.js"></script>
   
   <!-- Iconify Web Component -->
   <script src="./iconify-icon.min.js"></script>
-
+  
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      color: #1e293b;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      color: #16181D;
+      background-color: #ffffff;
     }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: "Plus Jakarta Sans", "Outfit", ui-sans-serif, system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
+      color: #0B2545;
     }
 
-    * {
-      transition: all 0.2s ease;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-
-    .glass-card {
+    .glass-panel {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .input-focus-ring:focus-within {
-      box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
-      border-color: #0D9488;
+    .sidebar-active-gradient {
+      background: #f3f4f6;
+      border-radius: 10px;
     }
 
-    .text-balance {
-      text-wrap: balance;
+    .table-row-hover:hover {
+      background-color: #f8fafc;
     }
 
-    .footer-link-hover:hover {
-      color: #2DD4BF;
-      transform: translateX(4px);
+    .custom-shadow-sm {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
 
-    .auth-container {
-      background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
+    .custom-shadow-md {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     }
+
+    button, a, input, select {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom font overrides for specific elements from design */
+    .font-roboto { font-family: 'Roboto', sans-serif; }
   </style>
 </head>
-<body class="bg-[#F9FAFB] min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col">
 
   <!-- Top Banner -->
-  <div class="w-full bg-[#F9FAFB]/50 border-b border-[#f3f4f6] py-1.5 text-center">
-    <p class="text-[10px] text-[#575E6B] font-['Roboto']">
+  <div class="w-full bg-[#F9FAFB]/50 border-b border-[#f3f4f6] py-1.5 px-4 text-center">
+    <p class="text-[10px] font-roboto text-[#575E6B]">
       Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.
     </p>
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-[#f3f4f6]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
-            <img src="./assets/IMG_1.svg" alt="Logo" class="w-5.5 h-5.5">
-          </div>
-          <span class="text-xl font-bold text-[#0B2545] font-['Inter']">Pockt Finance</span>
-        </a>
-        
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-1">
-          <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Products</button>
-          <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Support</button>
-        </nav>
+  <header class="sticky top-0 z-50 w-full bg-white border-b border-[#f3f4f6] custom-shadow-sm h-16 flex items-center justify-between px-4 lg:px-8">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
+        <img src="./assets/IMG_2.svg" alt="Logo Icon" class="w-5.5 h-5.5">
       </div>
+      <span class="text-xl font-bold text-[#0B2545] font-['Inter']">Pockt Finance</span>
+    </div>
 
-      <div class="flex items-center gap-4">
-        <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Log in</button>
-        <button class="px-5 py-2 text-sm font-medium text-white bg-[#0D9488] hover:bg-[#0b7a70] rounded-lg shadow-sm">Get started</button>
-        
-        <!-- Mobile Menu Toggle -->
-        <button class="md:hidden p-2 text-[#16181D]">
-          <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
-        </button>
+    <div class="flex items-center gap-4 lg:gap-6">
+      <!-- Search Bar (Desktop) -->
+      <div class="hidden md:flex items-center bg-[#F9FAFB] rounded-lg px-3 py-1.5 w-64 border border-transparent focus-within:border-[#17A2A8]/30">
+        <img src="./assets/IMG_4.svg" alt="Search" class="w-4 h-4 text-[#575E6B]">
+        <input type="text" placeholder="Search transactions..." class="bg-transparent border-none outline-none text-xs font-roboto ml-2 w-full text-[#575E6B] placeholder:text-[#9CA3AF]">
       </div>
+      
+      <!-- Notifications -->
+      <button class="p-2 hover:bg-gray-100 rounded-full relative">
+        <img src="./assets/IMG_1.svg" alt="Notifications" class="w-5 h-5 text-[#575E6B]">
+      </button>
+
+      <!-- User Profile -->
+      <div class="relative">
+        <div class="w-8 h-8 rounded-full overflow-hidden border border-gray-200">
+          <img src="./assets/IMG_3.webp" alt="User Avatar" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#1dd75b] border-2 border-white rounded-full"></div>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="lg:hidden p-2">
+        <iconify-icon icon="lucide:menu" width="24" height="24"></iconify-icon>
+      </button>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 auth-container">
-    
-    <!-- Auth Card -->
-    <div class="w-full max-w-[448px] bg-white rounded-xl shadow-xl overflow-hidden relative">
-      <!-- Top Accent Bar -->
-      <div class="h-1.5 w-full bg-[#0D9488]"></div>
-      
-      <div class="p-8 sm:p-10">
-        <!-- Header -->
-        <div class="flex flex-col items-center text-center mb-8">
-          <div class="mb-4">
-            <img src="./assets/IMG_2.svg" alt="Key" class="w-8 h-8">
-          </div>
-          <h1 class="text-2xl font-bold text-[#16181D] tracking-tight mb-2">Sign In to Pockt</h1>
-          <p class="text-sm text-[#575E6B] font-['Roboto']">Access your business treasury and cash flow tools.</p>
-        </div>
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex flex-col w-64 bg-[#F9FAFB] border-r border-[#f3f4f6] p-4 justify-between">
+      <nav class="space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_5.svg" alt="Dashboard" class="w-5 h-5">
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_6.svg" alt="Move Money" class="w-5 h-5">
+          Move Money
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#1E2128] sidebar-active-gradient rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_7.svg" alt="Statements" class="w-5 h-5 text-[#0B2545]">
+          Statements
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_8.svg" alt="Card Services" class="w-5 h-5">
+          Card Services
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_9.svg" alt="Admin Backend" class="w-5 h-5">
+          Admin Backend
+        </a>
+      </nav>
 
-        <!-- Form -->
-        <form class="space-y-5">
-          <div>
-            <label class="block text-sm font-medium text-[#16181D] mb-2 font-['Roboto']">Business Email</label>
-            <div class="relative flex items-center input-focus-ring border border-[#D1D5DB] rounded-lg px-3 py-2.5 bg-white">
-              <img src="./assets/IMG_3.svg" alt="Mail" class="w-4 h-4 mr-2 opacity-60">
-              <input type="email" placeholder="name@company.com" class="w-full text-sm outline-none font-['Roboto'] placeholder:text-[#575E6B]/60">
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-sm font-medium text-[#16181D] font-['Roboto']">Password</label>
-              <button type="button" class="text-xs font-medium text-[#0D9488] hover:underline">Forgot password?</button>
-            </div>
-            <div class="relative flex items-center input-focus-ring border border-[#D1D5DB] rounded-lg px-3 py-2.5 bg-white">
-              <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4 mr-2 opacity-60">
-              <input type="password" placeholder="••••••••" class="w-full text-sm outline-none font-['Roboto'] placeholder:text-[#575E6B]/60">
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-300 text-[#0D9488] focus:ring-[#0D9488]">
-            <label for="remember" class="text-xs font-medium text-[#4B5563] font-['Roboto']">Remember this device for 30 days</label>
-          </div>
-
-          <button type="submit" class="w-full py-3 bg-[#0D9488] hover:bg-[#0b7a70] text-white font-semibold rounded-lg shadow-md transition-all">
-            Sign In
-          </button>
-        </form>
-
-        <!-- Footer of Card -->
-        <div class="mt-8 pt-6 border-t border-[#f3f4f6] text-center">
-          <p class="text-sm text-[#575E6B] font-['Roboto'] mb-4">
-            New to Pockt Finance? 
-            <button class="font-semibold text-[#0D9488] hover:underline ml-1">Create an account</button>
-          </p>
-          
-          <div class="flex items-center justify-center gap-6 opacity-60 mb-6">
-            <div class="flex items-center gap-1.5">
-              <img src="./assets/IMG_5.svg" alt="Shield" class="w-4 h-4">
-              <span class="text-[10px] font-bold tracking-wider uppercase text-[#16181D]">MFA Protected</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4">
-              <span class="text-[10px] font-bold tracking-wider uppercase text-[#16181D]">256-Bit SSL</span>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-[#E5E7EB]/50">
-            <p class="text-[10px] leading-relaxed text-[#6B7280] font-medium uppercase tracking-tight">
-              Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.
-            </p>
-          </div>
-        </div>
+      <div class="space-y-1 border-t border-[#f3f4f6] pt-4">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_10.svg" alt="Help" class="w-5 h-5">
+          Help & Support
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-[#575E6B] hover:bg-gray-100 rounded-lg font-roboto text-sm font-medium">
+          <img src="./assets/IMG_11.svg" alt="Logout" class="w-5 h-5">
+          Log out
+        </a>
       </div>
-    </div>
+    </aside>
 
-    <!-- Secondary Links -->
-    <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full max-w-[448px]">
-      <a href="#" class="flex-1 bg-white/50 border border-[#E5E7EB] rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-white transition-colors">
-        <div class="w-8 h-8 bg-[#f3f4f6] rounded-full flex items-center justify-center">
-          <img src="./assets/IMG_5.svg" alt="Privacy" class="w-4 h-4">
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto bg-[#F9FAFB]/50 p-4 lg:p-12 no-scrollbar">
+      <div class="max-w-5xl mx-auto space-y-8">
+        
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 text-[#17A2A8] font-roboto text-sm font-medium mb-1">
+              <img src="./assets/IMG_7.svg" alt="Icon" class="w-4 h-4">
+              Financial Records
+            </div>
+            <h1 class="text-3xl font-bold text-[#0B2545]">Account Statements</h1>
+            <p class="text-[#575E6B] font-roboto mt-2">Access and download your monthly business performance reports.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="flex items-center gap-2 px-4 py-2 bg-white border border-[#0B2545]/20 rounded-lg text-sm font-roboto font-medium text-[#16181D] hover:bg-gray-50">
+              <img src="./assets/IMG_12.svg" alt="Share" class="w-4 h-4">
+              Share Records
+            </button>
+            <button class="flex items-center gap-2 px-4 py-2 bg-[#17A2A8] rounded-lg text-sm font-roboto font-medium text-white hover:bg-[#148e93] custom-shadow-sm">
+              <img src="./assets/IMG_13.svg" alt="Export" class="w-4 h-4">
+              Export All (.ZIP)
+            </button>
+          </div>
         </div>
-        <span class="text-xs font-semibold text-[#16181D]">Privacy Policy</span>
-      </a>
-      <a href="#" class="flex-1 bg-white/50 border border-[#E5E7EB] rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-white transition-colors">
-        <div class="w-8 h-8 bg-[#f3f4f6] rounded-full flex items-center justify-center">
-          <img src="./assets/IMG_6.svg" alt="Support" class="w-4 h-4">
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Stat 1 -->
+          <div class="bg-white p-6 rounded-xl custom-shadow-sm flex items-center gap-4">
+            <div class="w-11 h-11 bg-[#17A2A8]/10 rounded-full flex items-center justify-center">
+              <img src="./assets/IMG_7.svg" alt="Statements" class="w-5 h-5 text-[#17A2A8]">
+            </div>
+            <div>
+              <p class="text-sm font-roboto font-medium text-[#575E6B]">Available Statements</p>
+              <p class="text-2xl font-bold text-[#0B2545]">24</p>
+            </div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="bg-white p-6 rounded-xl custom-shadow-sm flex items-center gap-4">
+            <div class="w-11 h-11 bg-[#17A2A8]/10 rounded-full flex items-center justify-center">
+              <img src="./assets/IMG_14.svg" alt="Recent" class="w-5 h-5 text-[#17A2A8]">
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-roboto font-medium text-[#575E6B]">Recent Generation</p>
+              <div class="flex items-center justify-between">
+                <p class="text-2xl font-bold text-[#0B2545]">Oct 02, 2024</p>
+                <span class="text-[10px] font-roboto font-medium text-[#16181D] bg-gray-100 px-2 py-0.5 rounded">On Schedule</span>
+              </div>
+            </div>
+          </div>
+          <!-- Stat 3 -->
+          <div class="bg-white p-6 rounded-xl custom-shadow-sm flex items-center gap-4">
+            <div class="w-11 h-11 bg-[#17A2A8]/10 rounded-full flex items-center justify-center">
+              <img src="./assets/IMG_15.svg" alt="Storage" class="w-5 h-5 text-[#17A2A8]">
+            </div>
+            <div>
+              <p class="text-sm font-roboto font-medium text-[#575E6B]">Storage Used</p>
+              <p class="text-2xl font-bold text-[#0B2545]">48.2 MB</p>
+            </div>
+          </div>
         </div>
-        <span class="text-xs font-semibold text-[#16181D]">Support Center</span>
-      </a>
-    </div>
-  </main>
+
+        <!-- Table Section -->
+        <div class="bg-white rounded-xl custom-shadow-sm overflow-hidden">
+          <!-- Table Controls -->
+          <div class="p-6 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="flex items-center bg-[#F9FAFB]/50 p-1 rounded-lg w-fit">
+              <button class="px-4 py-1.5 bg-white rounded-md text-sm font-roboto font-medium text-[#16181D] custom-shadow-sm">Monthly</button>
+              <button class="px-4 py-1.5 text-sm font-roboto font-medium text-[#575E6B] hover:text-[#16181D]">Quarterly</button>
+              <button class="px-4 py-1.5 text-sm font-roboto font-medium text-[#575E6B] hover:text-[#16181D]">Tax Documents</button>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="relative flex items-center bg-[#F9FAFB]/30 border border-transparent focus-within:border-gray-200 rounded-lg px-3 py-2 w-full sm:w-64">
+                <img src="./assets/IMG_4.svg" alt="Search" class="w-4 h-4 text-[#575E6B]">
+                <input type="text" placeholder="Search by filename..." class="bg-transparent border-none outline-none text-sm font-roboto ml-2 w-full text-[#575E6B]">
+              </div>
+              
+              <div class="relative flex items-center bg-[#F9FAFB]/30 border border-transparent rounded-lg px-3 py-2 w-full sm:w-48">
+                <input type="text" value="All Accounts" readonly class="bg-transparent border-none outline-none text-sm font-roboto w-full text-[#16181D]">
+                <img src="./assets/IMG_16.svg" alt="Dropdown" class="w-4 h-4">
+              </div>
+
+              <button class="flex items-center gap-2 px-4 py-2 bg-[#f3f4f6] rounded-lg text-sm font-roboto font-medium text-[#1F2228] hover:bg-gray-200">
+                <img src="./assets/IMG_17.svg" alt="Filters" class="w-4 h-4">
+                Filters
+              </button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#F9FAFB]/50 border-b border-gray-100">
+                  <th class="px-6 py-4 text-sm font-semibold text-[#0B2545] font-roboto">Statement Name</th>
+                  <th class="px-6 py-4 text-sm font-semibold text-[#0B2545] font-roboto">Period</th>
+                  <th class="px-6 py-4 text-sm font-semibold text-[#0B2545] font-roboto">Account</th>
+                  <th class="px-6 py-4 text-sm font-semibold text-[#0B2545] font-roboto">Size</th>
+                  <th class="px-6 py-4 text-sm font-semibold text-[#0B2545] font-roboto text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-50">
+                <!-- Row 1 -->
+                <tr class="table-row-hover">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">September 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Sep 1 - Sep 30, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.2 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="table-row-hover bg-[#F9FAFB]/20">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">August 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Aug 1 - Aug 31, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.4 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="table-row-hover">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">July 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Jul 1 - Jul 31, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.1 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr class="table-row-hover bg-[#F9FAFB]/20">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">June 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Jun 1 - Jun 30, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.3 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr class="table-row-hover">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">Q2 2024 Combined</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Apr 1 - Jun 30, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">Multiple</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">3.8 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr class="table-row-hover bg-[#F9FAFB]/20">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">May 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">May 1 - May 31, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.2 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 7 -->
+                <tr class="table-row-hover">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-[#17A2A8]/5 rounded flex items-center justify-center">
+                        <img src="./assets/IMG_7.svg" alt="File" class="w-4 h-4 text-[#17A2A8]">
+                      </div>
+                      <span class="text-sm font-medium text-[#0B2545] font-roboto">April 2024 Operating</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">Apr 1 - Apr 30, 2024</td>
+                  <td class="px-6 py-4">
+                    <span class="text-[10px] font-bold font-['Plus_Jakarta_Sans'] text-[#575E6B] bg-[#F9FAFB] px-3 py-1 rounded-full">...4492</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-[#575E6B] font-roboto">1.1 MB</td>
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_18.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_13.svg" class="w-4 h-4"></button>
+                      <button class="p-1.5 hover:bg-gray-100 rounded-lg"><img src="./assets/IMG_19.svg" class="w-4 h-4"></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs font-roboto text-[#575E6B]">
+              Showing <span class="font-medium text-[#16181D]">1 to 7</span> of <span class="font-medium text-[#16181D]">24</span> statements
+            </p>
+            <div class="flex items-center gap-2">
+              <button class="px-3 py-1.5 border border-[#E0E2E6] rounded-lg text-sm font-roboto font-medium text-[#16181D] opacity-50 cursor-not-allowed">Previous</button>
+              <button class="w-9 h-9 bg-[#0B2545] text-white rounded-lg text-sm font-roboto font-medium">1</button>
+              <button class="w-9 h-9 border border-[#E0E2E6] text-[#16181D] rounded-lg text-sm font-roboto font-medium hover:bg-gray-50">2</button>
+              <button class="w-9 h-9 border border-[#E0E2E6] text-[#16181D] rounded-lg text-sm font-roboto font-medium hover:bg-gray-50">3</button>
+              <button class="px-3 py-1.5 border border-[#E0E2E6] rounded-lg text-sm font-roboto font-medium text-[#16181D] hover:bg-gray-50">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="bg-[#E0E6EE]/30 border border-[#E0E6EE] rounded-xl p-6 flex gap-4">
+          <div class="w-9 h-9 bg-white rounded-full flex items-center justify-center custom-shadow-sm shrink-0">
+            <img src="./assets/IMG_15.svg" alt="Info" class="w-5 h-5 text-[#0B2545]">
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-semibold text-[#0B2545] font-['Inter']">Need older statements?</h3>
+            <p class="text-sm font-roboto text-[#575E6B] leading-relaxed max-w-2xl">
+              Statements for accounts closed more than 2 years ago may not appear in this list. Please contact our support team if you require historical data for audits or long-term compliance purposes.
+            </p>
+            <button class="flex items-center gap-1 text-sm font-bold font-roboto text-[#17A2A8] hover:underline">
+              Contact Support
+              <img src="./assets/IMG_20.svg" alt="Arrow" class="w-3 h-3">
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
 
   <!-- Footer -->
-  <footer class="bg-[#0B2545] text-white pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        <!-- Brand Column -->
-        <div class="space-y-6">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-white rounded-md flex items-center justify-center">
-              <img src="./assets/IMG_1.svg" alt="Logo" class="w-5.5 h-5.5">
-            </div>
-            <span class="text-xl font-bold font-['Inter']">Pockt Finance</span>
-          </div>
-          <p class="text-[#CBD5E1] text-sm italic">"The pocket-sized CFO."</p>
-          <div class="flex items-center gap-2 text-[#94A3B8] text-sm">
-            <img src="./assets/IMG_7.svg" alt="Globe" class="w-4 h-4">
-            <span>United States (English)</span>
-          </div>
-        </div>
-
-        <!-- Products -->
-        <div>
-          <h4 class="text-[#2DD4BF] font-bold mb-6">Products</h4>
-          <ul class="space-y-3 text-[#CBD5E1] text-sm">
-            <li><a href="#" class="footer-link-hover block">Pockt Change</a></li>
-            <li><a href="#" class="footer-link-hover block">Pockt Money</a></li>
-            <li><a href="#" class="footer-link-hover block">Pockt Folio</a></li>
-            <li><a href="#" class="footer-link-hover block">Pockt Flux</a></li>
-          </ul>
-        </div>
-
-        <!-- Resources -->
-        <div>
-          <h4 class="text-[#2DD4BF] font-bold mb-6">Resources</h4>
-          <ul class="space-y-3 text-[#CBD5E1] text-sm">
-            <li><a href="#" class="footer-link-hover block">Pricing</a></li>
-            <li><a href="#" class="footer-link-hover block">Help Center</a></li>
-            <li><a href="#" class="footer-link-hover block">API Docs</a></li>
-            <li><a href="#" class="footer-link-hover block">Contact Support</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div>
-          <h4 class="text-[#2DD4BF] font-bold mb-6">Legal</h4>
-          <ul class="space-y-3 text-[#CBD5E1] text-sm">
-            <li><a href="#" class="footer-link-hover block">Terms of Service</a></li>
-            <li><a href="#" class="footer-link-hover block">Privacy Policy</a></li>
-            <li><a href="#" class="footer-link-hover block">GDPR Compliance</a></li>
-            <li><a href="#" class="footer-link-hover block">Cookie Settings</a></li>
-          </ul>
-        </div>
+  <footer class="w-full bg-white border-t border-[#f3f4f6] py-6 px-4 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-4 text-xs font-roboto text-[#575E6B]">
+        <span>© 2024 Pockt Finance</span>
+        <span class="italic font-medium">"The pocket-sized CFO."</span>
+      </div>
+      
+      <div class="text-[10px] font-roboto text-[#575E6B] text-center max-w-lg">
+        Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.
       </div>
 
-      <!-- Bottom Footer -->
-      <div class="pt-8 border-t border-[#334155] text-center">
-        <p class="text-[#94A3B8] text-[12px] leading-relaxed max-w-2xl mx-auto">
-          Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.<br>
-          By continuing you agree to the Terms & Privacy.
-        </p>
+      <div class="flex items-center gap-4 text-xs font-roboto text-[#575E6B]">
+        <button class="hover:underline">Terms & Privacy</button>
+        <button class="hover:underline">GDPR</button>
       </div>
     </div>
   </footer>
