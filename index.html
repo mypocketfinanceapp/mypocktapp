@@ -3,37 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pockt Finance | Help & Support</title>
-  
-  <!-- Tailwind CSS v4 -->
+  <title>Login - Pockt Finance</title>
   <script src="./tailwindcss.js"></script>
-  
-  <!-- Iconify Web Component -->
   <script src="./iconify-icon.min.js"></script>
-  
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
-
   <style>
     body {
-      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-      color: #353940;
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: #ffffff;
+      color: #1e293b;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+      font-family: "Plus Jakarta Sans", "Outfit", ui-sans-serif, system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #0B2545;
-    }
-
-    .font-outfit {
-      font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
     }
 
     * {
@@ -55,393 +43,153 @@
       background: #94a3b8;
     }
 
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    .glass-card {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.12);
+      border: 1px solid #F4F4F6;
     }
 
-    .input-focus-ring:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(23, 162, 168, 0.2);
-      border-color: #17A2A8;
+    .input-focus-ring {
+      @apply focus-within:ring-2 focus-within:ring-[#17A2A8]/20 focus-within:border-[#17A2A8] outline-none;
     }
 
-    .card-hover-effect:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    .auth-gradient-bg {
+      background: #F9FAFA;
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+      font-size: 0.875rem;
+    }
+
+    button:active {
+      transform: scale(0.98);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="auth-gradient-bg min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 glass-panel border-b border-[#F4F4F6]">
-    <div class="max-w-[1440px] mx-auto px-4 lg:px-16 h-16 flex items-center justify-between">
-      <!-- Logo Section -->
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
-          <img src="./assets/IMG_1.svg" alt="Logo Icon" class="w-[22px] h-[22px]">
-        </div>
-        <div class="flex flex-col">
-          <span class="text-[20px] leading-none font-bold text-[#0B2545]">Pockt Finance</span>
-          <span class="text-[10px] font-medium text-[#353940] tracking-tight">The pocket-sized CFO.</span>
-        </div>
+  <header class="sticky top-0 z-50 w-full bg-white/60 backdrop-blur-md border-b border-[#F4F4F6] px-4 md:px-16 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
+        <img src="./assets/IMG_1.svg" alt="Logo Icon" class="w-5.5 h-5.5">
       </div>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-2">
-        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
-          <img src="./assets/IMG_2.svg" class="w-4 h-4" alt="Dashboard"> Dashboard
-        </button>
-        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
-          <img src="./assets/IMG_3.svg" class="w-4 h-4" alt="Move Money"> Move Money
-        </button>
-        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
-          <img src="./assets/IMG_4.svg" class="w-4 h-4" alt="Cards"> Cards
-        </button>
-        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
-          <img src="./assets/IMG_5.svg" class="w-4 h-4" alt="Statements"> Statements
-        </button>
-      </nav>
-
-      <!-- Search & Profile -->
-      <div class="flex items-center gap-4">
-        <div class="hidden xl:flex items-center bg-[#F4F4F6] rounded-xl px-3 py-1.5 w-64">
-          <img src="./assets/IMG_7.svg" class="w-4 h-4 mr-2 opacity-60" alt="Search">
-          <input type="text" placeholder="Search transactions..." class="bg-transparent border-none outline-none text-sm w-full placeholder:text-[#353940]">
-        </div>
-        
-        <div class="flex items-center gap-4 border-l border-[#F4F4F6] pl-4">
-          <div class="relative">
-            <img src="./assets/IMG_8.svg" class="w-5 h-5 text-[#17191C]" alt="Notifications">
-            <div class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#DC3545] border-2 border-white rounded-full"></div>
-          </div>
-          
-          <div class="hidden md:flex flex-col items-end">
-            <span class="text-sm font-medium text-[#17191C]">Acme Corp</span>
-            <span class="text-[12px] text-[#353940]">Admin</span>
-          </div>
-          
-          <div class="relative">
-            <img src="./assets/IMG_6.webp" class="w-9 h-9 rounded-full object-cover border border-[#F4F4F6]" alt="User Avatar">
-            <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#1dd75b] border-2 border-white rounded-full"></div>
-          </div>
-        </div>
+      <div class="flex flex-col">
+        <span class="text-[20px] font-bold leading-none text-[#0B2545]">Pockt Finance</span>
+        <span class="text-[10px] font-medium text-[#353940] tracking-tight">The pocket-sized CFO.</span>
       </div>
+    </div>
+    
+    <div class="flex items-center gap-2 md:gap-4">
+      <button class="hidden sm:block text-sm font-medium text-[#17191C] px-4 py-2 hover:bg-gray-50 rounded-lg">Log in</button>
+      <button class="bg-[#17A2A8] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#148e93] shadow-sm">Open Account</button>
+      <button class="p-2 text-[#17191C] hover:bg-gray-50 rounded-lg">
+        <img src="./assets/IMG_2.svg" alt="Help" class="w-5 h-5">
+      </button>
     </div>
   </header>
 
-  <main class="flex-grow">
-    <!-- Hero Section -->
-    <section class="bg-[#F2F7FD] py-16 px-4 border-b border-[#F4F4F6]">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">How can we help?</h1>
-        <p class="text-lg text-[#353940] mb-8">Search our knowledge base or reach out to our team of specialists.</p>
-        
-        <div class="relative max-w-3xl mx-auto mb-6">
-          <div class="flex items-center bg-white border border-[#DEDFE3] rounded-xl shadow-sm px-4 py-4">
-            <img src="./assets/IMG_7.svg" class="w-5 h-5 mr-3 opacity-60" alt="Search">
-            <input type="text" placeholder="Search for answers (e.g., 'Reset MFA', 'Card limits', 'Wire transfers')..." class="w-full outline-none text-sm md:text-base">
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+    <div class="w-full max-w-[450px] glass-card rounded-xl p-6 md:p-8">
+      <h1 class="text-2xl font-bold mb-2">Welcome Back</h1>
+      <p class="text-sm text-[#353940] mb-8">Access your Pockt Finance business dashboard</p>
+
+      <form class="space-y-5">
+        <!-- Email Field -->
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-[#17191C]">Work Email</label>
+          <div class="relative flex items-center border border-[#DEDFE3] rounded-lg px-3 py-2.5 bg-white input-focus-ring">
+            <img src="./assets/IMG_3.svg" alt="Mail" class="w-4 h-4 mr-2.5">
+            <input type="email" placeholder="name@company.com" class="w-full text-sm outline-none bg-transparent text-[#353940]">
           </div>
         </div>
-        
-        <div class="flex flex-wrap justify-center items-center gap-3 text-sm">
-          <span class="uppercase tracking-widest text-[12px] font-semibold text-[#353940] mr-2">Popular:</span>
-          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Account Security</span>
-          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Wire Deadlines</span>
-          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">MFA Issues</span>
-          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Ordering Cards</span>
+
+        <!-- Password Field -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label class="text-sm font-medium text-[#17191C]">Password</label>
+            <button type="button" class="text-xs text-[#17A2A8] hover:underline">Forgot password?</button>
+          </div>
+          <div class="relative flex items-center border border-[#DEDFE3] rounded-lg px-3 py-2.5 bg-white input-focus-ring">
+            <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4 mr-2.5">
+            <input type="password" placeholder="••••••••" class="w-full text-sm outline-none bg-transparent text-[#353940]">
+          </div>
+        </div>
+
+        <!-- Remember Device -->
+        <div class="flex items-start gap-2 py-1">
+          <input type="checkbox" id="remember" class="mt-1 w-4 h-4 border-[#565e6c] rounded accent-[#17A2A8]">
+          <label for="remember" class="text-sm font-medium text-[#353940] cursor-pointer">Remember this device for 30 days</label>
+        </div>
+
+        <!-- Sign In Button -->
+        <button type="submit" class="w-full bg-[#17A2A8] text-white font-semibold py-3 rounded-lg shadow-md hover:bg-[#148e93] active:scale-[0.99]">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-[#F4F4F6]"></div>
+        </div>
+        <div class="relative flex justify-center">
+          <span class="bg-white px-3 text-[12px] uppercase tracking-wider text-[#353940]">Or continue with</span>
         </div>
       </div>
-    </section>
 
-    <!-- Contact Options -->
-    <section class="max-w-[1440px] mx-auto px-4 lg:px-16 py-16">
-      <h2 class="text-2xl font-bold mb-8">Get in touch</h2>
+      <!-- Social Login -->
+      <div class="grid grid-cols-2 gap-4">
+        <button class="flex items-center justify-center gap-2 border border-[#DEDFE3] rounded-lg py-3 hover:bg-gray-50">
+          <img src="./assets/IMG_5.webp" alt="Google" class="w-4 h-4">
+          <span class="text-sm font-medium text-[#17191C]">Google</span>
+        </button>
+        <button class="flex items-center justify-center gap-2 border border-[#DEDFE3] rounded-lg py-3 hover:bg-gray-50">
+          <img src="./assets/IMG_6.webp" alt="Microsoft" class="w-4 h-4">
+          <span class="text-sm font-medium text-[#17191C]">Microsoft</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Links -->
+    <div class="mt-8 text-center space-y-4">
+      <p class="text-sm text-[#353940]">
+        Don't have a business account yet? 
+        <button class="text-[#17A2A8] font-semibold hover:underline ml-1">Get Started for Free</button>
+      </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Live Chat -->
-        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
-          <div class="p-6 flex-grow">
-            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
-              <img src="./assets/IMG_9.svg" class="w-6 h-6" alt="Chat">
-            </div>
-            <h3 class="text-xl font-bold mb-2">Live Chat</h3>
-            <p class="text-sm text-[#353940] mb-4">Instant messaging with our support specialists.</p>
-            <p class="text-sm text-[#353940] mb-8 leading-relaxed">Best for quick questions about your account, transactions, or card issues.</p>
-            <button class="w-full bg-[#17A2A8] text-white font-semibold py-2.5 rounded-xl hover:bg-[#148e93]">Start a New Chat</button>
-          </div>
-          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex justify-between text-[12px] text-[#353940]">
-            <span>Specialists Online</span>
-            <span>Wait: ~3 mins</span>
-          </div>
+      <div class="flex items-center justify-center gap-6 opacity-60">
+        <div class="flex items-center gap-1.5">
+          <img src="./assets/IMG_7.svg" alt="Shield" class="w-3 h-3">
+          <span class="text-[12px] text-[#353940]">SOC2 Compliant</span>
         </div>
-
-        <!-- Email Support -->
-        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
-          <div class="p-6 flex-grow">
-            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
-              <img src="./assets/IMG_10.svg" class="w-6 h-6" alt="Email">
-            </div>
-            <h3 class="text-xl font-bold mb-2">Email Support</h3>
-            <p class="text-sm text-[#353940] mb-6">Send us a detailed message about your inquiry.</p>
-            
-            <div class="space-y-3 mb-6">
-              <input type="text" placeholder="Subject" class="w-full bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring">
-              <div class="flex gap-2">
-                <input type="text" placeholder="Ticket ID (Optional)" class="flex-1 bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring">
-                <div class="w-1/3 bg-[#F4F4F6]/50 border border-[#F4F4F6] rounded-xl px-3 py-2 text-sm text-[#353940] flex items-center">Urgent</div>
-              </div>
-              <textarea placeholder="How can we help?" rows="3" class="w-full bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring resize-none"></textarea>
-            </div>
-            <button class="w-full border border-[#0B2545] text-[#0B2545] font-semibold py-2.5 rounded-xl hover:bg-[#0B2545] hover:text-white">Send Message</button>
-          </div>
-          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex items-center gap-2 text-[12px] text-[#353940]">
-            <img src="./assets/IMG_12.svg" class="w-3 h-3" alt="Clock">
-            <span>Avg. response: 4-6 hours</span>
-          </div>
-        </div>
-
-        <!-- Phone Support -->
-        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
-          <div class="p-6 flex-grow">
-            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
-              <img src="./assets/IMG_13.svg" class="w-6 h-6" alt="Phone">
-            </div>
-            <h3 class="text-xl font-bold mb-2">Phone Support</h3>
-            <p class="text-sm text-[#353940] mb-6">Speak directly with our business banking team.</p>
-            
-            <div class="space-y-3">
-              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3 relative">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">North America</span>
-                <p class="text-sm font-semibold text-[#17191C] mt-1">+1 (888) 555-POCKT</p>
-                <span class="absolute top-3 right-3 text-[12px] font-semibold border border-[#F4F4F6] px-2 py-0.5 rounded-full">Priority</span>
-              </div>
-              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">Europe & UK</span>
-                <p class="text-sm font-semibold text-[#17191C] mt-1">+44 20 7946 0001</p>
-              </div>
-              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">Asia Pacific</span>
-                <p class="text-sm font-semibold text-[#17191C] mt-1">+65 6789 0123</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex items-center gap-2 text-[12px] text-[#353940]">
-            <img src="./assets/IMG_14.svg" class="w-3 h-3" alt="Globe">
-            <span>Monday - Friday, 9AM - 6PM EST</span>
-          </div>
+        <div class="flex items-center gap-1.5">
+          <img src="./assets/IMG_4.svg" alt="Lock" class="w-3 h-3">
+          <span class="text-[12px] text-[#353940]">256-bit Encryption</span>
         </div>
       </div>
-    </section>
-
-    <!-- Browse by Category -->
-    <section class="max-w-[1440px] mx-auto px-4 lg:px-16 mb-16">
-      <div class="bg-[#F9FAFA] rounded-2xl border border-[#F4F4F6] p-8">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-          <div>
-            <h2 class="text-2xl font-bold mb-2">Browse by Category</h2>
-            <p class="text-[#353940]">Self-service resources to help you manage your business faster.</p>
-          </div>
-          <button class="flex items-center gap-2 text-[#0B2545] font-semibold hover:underline">
-            Visit Help Center <img src="./assets/IMG_15.svg" class="w-4 h-4" alt="Arrow">
-          </button>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Category Cards -->
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_16.svg" class="w-4 h-4" alt="Security">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Account & Security</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_4.svg" class="w-4 h-4" alt="Cards">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Cards & Spending</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_14.svg" class="w-4 h-4" alt="Global">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Global Transfers</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_17.svg" class="w-4 h-4" alt="Verification">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Business Verification</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_5.svg" class="w-4 h-4" alt="Tax">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Tax Reporting</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_18.svg" class="w-4 h-4" alt="API">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">API Documentation</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_19.svg" class="w-4 h-4" alt="Billing">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Billing & Fees</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-
-          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
-                <img src="./assets/IMG_16.svg" class="w-4 h-4" alt="Fraud">
-              </div>
-              <span class="text-sm font-medium text-[#17191C]">Fraud Prevention</span>
-            </div>
-            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="max-w-4xl mx-auto px-4 py-16">
-      <h2 class="text-2xl font-bold text-center mb-12">Top Frequently Asked Questions</h2>
-      
-      <div class="space-y-4">
-        <!-- FAQ Item 1 (Open) -->
-        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
-          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
-            <span class="text-base font-semibold text-[#17191C]">How do I increase my daily wire transfer limits?</span>
-            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
-          </button>
-          <div class="px-6 pb-6">
-            <p class="text-sm text-[#353940] leading-relaxed">
-              Daily wire limits can be adjusted within the <span class="text-[#0B2545] font-medium">Settings</span> panel of your business profile. Note that increases above $100,000 may require a brief phone verification with our compliance team for security purposes.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ Item 2 -->
-        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
-          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
-            <span class="text-base font-semibold text-[#17191C]">What should I do if my physical card is lost or stolen?</span>
-            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
-          </button>
-        </div>
-
-        <!-- FAQ Item 3 -->
-        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
-          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
-            <span class="text-base font-semibold text-[#17191C]">Can I add multiple users with different permission levels?</span>
-            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
-          </button>
-        </div>
-
-        <!-- FAQ Item 4 -->
-        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
-          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
-            <span class="text-base font-semibold text-[#17191C]">Is Pockt Finance available internationally?</span>
-            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
-          </button>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-[#F4F4F6] pt-16 pb-8">
-    <div class="max-w-[1440px] mx-auto px-4 lg:px-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        <!-- Brand Column -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <img src="./assets/IMG_1.svg" class="w-5 h-5" alt="Logo">
-            <span class="text-lg font-bold text-[#0B2545]">Pockt Finance</span>
-          </div>
-          <p class="text-sm text-[#17191C] leading-relaxed max-w-xs">
-            Comprehensive financial management for growing businesses.
-          </p>
-        </div>
-
-        <!-- Links Columns -->
-        <div>
-          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Product</h4>
-          <ul class="space-y-3 text-sm text-[#353940]">
-            <li><a href="#" class="hover:text-[#0B2545]">Dashboard</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">Move Money</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">Cards</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Company</h4>
-          <ul class="space-y-3 text-sm text-[#353940]">
-            <li><a href="#" class="hover:text-[#0B2545]">Contact Support</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">About Us</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">Press</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Support</h4>
-          <ul class="space-y-3 text-sm text-[#353940]">
-            <li><a href="#" class="hover:text-[#0B2545]">Help Center</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">API Docs</a></li>
-            <li><a href="#" class="hover:text-[#0B2545]">Community</a></li>
-          </ul>
-        </div>
+  <footer class="w-full bg-white border-t border-[#F4F4F6] px-4 md:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8 text-[12px] text-[#353940]">
+      <span>© 2024 Pockt Finance Inc.</span>
+      <a href="#" class="hover:text-[#17A2A8]">Terms & Privacy</a>
+      <a href="#" class="hover:text-[#17A2A8]">GDPR</a>
+      <a href="#" class="hover:text-[#17A2A8]">Security</a>
+    </div>
+    
+    <div class="flex items-center gap-4 text-[12px] text-[#353940]">
+      <div class="flex items-center gap-1.5 cursor-pointer hover:text-[#17A2A8]">
+        <img src="./assets/IMG_8.svg" alt="Globe" class="w-3 h-3">
+        <span>United States (English)</span>
+        <img src="./assets/IMG_9.svg" alt="Chevron" class="w-3 h-3">
       </div>
-
-      <!-- Bottom Bar -->
-      <div class="pt-8 border-t border-[#F4F4F6] flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="flex flex-wrap items-center gap-6 text-[12px] text-[#353940]">
-          <span>© 2024 Pockt Finance Inc.</span>
-          <a href="#" class="hover:text-[#0B2545]">Terms & Privacy</a>
-          <a href="#" class="hover:text-[#0B2545]">GDPR</a>
-          <a href="#" class="hover:text-[#0B2545]">Security</a>
-        </div>
-        
-        <div class="flex items-center gap-4 text-[12px] text-[#353940]">
-          <div class="flex items-center gap-1.5">
-            <img src="./assets/IMG_14.svg" class="w-3 h-3" alt="Globe">
-            <span>United States (English)</span>
-            <img src="./assets/IMG_20.svg" class="w-3 h-3 opacity-60" alt="Down">
-          </div>
-          <span class="opacity-20">|</span>
-          <span class="text-[#17A2A8] font-medium italic">The pocket-sized CFO.</span>
-        </div>
-      </div>
+      <span class="opacity-30 hidden sm:block">|</span>
+      <span class="italic font-medium text-[#17A2A8] hidden sm:block">The pocket-sized CFO.</span>
     </div>
   </footer>
 

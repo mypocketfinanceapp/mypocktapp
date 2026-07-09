@@ -3,443 +3,272 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pockt Finance - Dashboard</title>
+  <title>Sign In - Pockt Finance</title>
+  
+  <!-- Tailwind CSS v4 -->
   <script src="./tailwindcss.js"></script>
+  
+  <!-- Iconify Web Component -->
   <script src="./iconify-icon.min.js"></script>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
+
   <style>
     body {
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      color: #1E2128;
-      background-color: #ffffff;
+      color: #16181D;
     }
+
     h1, h2, h3, h4, h5, h6 {
       font-family: "Plus Jakarta Sans", "Outfit", ui-sans-serif, system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #0B2545;
     }
-    * { transition: all 0.2s ease; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
-    .card-shadow { box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06); }
-    .sidebar-link-active { background-color: #f3f4f6; color: #1E2128; font-weight: 600; }
-    .text-roboto { font-family: 'Roboto', sans-serif; }
+
+    * {
+      transition: all 0.2s ease;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .input-focus-ring:focus-within {
+      box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+      border-color: #0D9488;
+    }
+
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    .footer-link-hover:hover {
+      color: #2DD4BF;
+      transform: translateX(4px);
+    }
+
+    .auth-container {
+      background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
+    }
   </style>
 </head>
-<body class="bg-white">
+<body class="bg-[#F9FAFB] min-h-screen flex flex-col">
 
   <!-- Top Banner -->
-  <div class="w-full bg-[#F9FAFB]/50 border-b border-[#f3f4f6] py-1.5 px-4 text-center">
-    <p class="text-[10px] text-[#575E6B] text-roboto">Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.</p>
+  <div class="w-full bg-[#F9FAFB]/50 border-b border-[#f3f4f6] py-1.5 text-center">
+    <p class="text-[10px] text-[#575E6B] font-['Roboto']">
+      Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.
+    </p>
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 w-full bg-white border-b border-[#f3f4f6] shadow-sm px-4 lg:px-8 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
-        <img src="./assets/IMG_2.svg" class="w-5.5 h-5.5" alt="Logo Icon">
+  <header class="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-[#f3f4f6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-8">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
+            <img src="./assets/IMG_1.svg" alt="Logo" class="w-5.5 h-5.5">
+          </div>
+          <span class="text-xl font-bold text-[#0B2545] font-['Inter']">Pockt Finance</span>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-1">
+          <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Products</button>
+          <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Support</button>
+        </nav>
       </div>
-      <span class="text-xl font-bold text-[#0B2545]">Pockt Finance</span>
-    </div>
 
-    <div class="flex items-center gap-4 lg:gap-6">
-      <div class="hidden md:flex items-center bg-[#F9FAFB] rounded-lg px-3 py-1.5 w-64 border border-transparent focus-within:border-gray-200">
-        <iconify-icon icon="lucide:search" class="text-[#575E6B] mr-2" width="16"></iconify-icon>
-        <input type="text" placeholder="Search transactions..." class="bg-transparent border-none outline-none text-xs w-full text-roboto">
+      <div class="flex items-center gap-4">
+        <button class="px-4 py-2 text-sm font-medium text-[#16181D] hover:bg-gray-50 rounded-lg">Log in</button>
+        <button class="px-5 py-2 text-sm font-medium text-white bg-[#0D9488] hover:bg-[#0b7a70] rounded-lg shadow-sm">Get started</button>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden p-2 text-[#16181D]">
+          <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+        </button>
       </div>
-      <button class="p-2 text-[#575E6B] hover:bg-gray-100 rounded-full relative">
-        <iconify-icon icon="lucide:bell" width="20"></iconify-icon>
-      </button>
-      <div class="relative">
-        <img src="./assets/IMG_3.webp" class="w-8 h-8 rounded-full object-cover border border-gray-100" alt="User Avatar">
-        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#1dd75b] border-2 border-white rounded-full"></div>
-      </div>
-      <!-- Mobile Menu Toggle -->
-      <button class="lg:hidden p-2 text-[#0B2545]">
-        <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
-      </button>
     </div>
   </header>
 
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <aside class="hidden lg:flex flex-col w-64 bg-[#F9FAFB] border-r border-[#f3f4f6] sticky top-16 h-[calc(100vh-64px)]">
-      <nav class="flex-1 p-4 space-y-1">
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg sidebar-link-active">
-          <img src="./assets/IMG_5.svg" class="w-5 h-5" alt="Dashboard">
-          <span class="text-sm font-medium text-roboto">Dashboard</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_6.svg" class="w-5 h-5 opacity-70" alt="Move Money">
-          <span class="text-sm font-medium text-roboto">Move Money</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_7.svg" class="w-5 h-5 opacity-70" alt="Statements">
-          <span class="text-sm font-medium text-roboto">Statements</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_8.svg" class="w-5 h-5 opacity-70" alt="Card Services">
-          <span class="text-sm font-medium text-roboto">Card Services</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_9.svg" class="w-5 h-5 opacity-70" alt="Admin Backend">
-          <span class="text-sm font-medium text-roboto">Admin Backend</span>
-        </a>
-      </nav>
-
-      <div class="p-4 border-t border-[#f3f4f6] space-y-1">
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_10.svg" class="w-5 h-5 opacity-70" alt="Help">
-          <span class="text-sm font-medium text-roboto">Help & Support</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#575E6B] hover:bg-gray-100">
-          <img src="./assets/IMG_11.svg" class="w-5 h-5 opacity-70" alt="Logout">
-          <span class="text-sm font-medium text-roboto">Log out</span>
-        </a>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 bg-[#F9FAFB]/50 p-4 lg:p-12 overflow-x-hidden">
-      <!-- Dashboard Header -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h1 class="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p class="text-[#575E6B] mt-1 text-roboto">Welcome back, Felix. Here's your business at a glance.</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <button class="flex items-center gap-2 px-4 py-2 bg-white border border-[#E0E2E6] rounded-lg text-xs font-medium text-[#16181D] hover:bg-gray-50">
-            <iconify-icon icon="lucide:calendar" width="16"></iconify-icon>
-            Last 30 Days
-          </button>
-          <button class="flex items-center gap-2 px-4 py-2 bg-[#0D9488] text-white rounded-lg text-xs font-medium hover:bg-[#0b7a70] shadow-sm">
-            <iconify-icon icon="lucide:plus" width="16"></iconify-icon>
-            Move Money
-          </button>
-        </div>
-      </div>
-
-      <!-- Stats Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
-        <!-- Total Balance -->
-        <div class="bg-white p-6 rounded-xl card-shadow">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-9 h-9 bg-[#0B2545]/5 rounded-lg flex items-center justify-center">
-              <iconify-icon icon="lucide:dollar-sign" class="text-[#0B2545]" width="20"></iconify-icon>
-            </div>
-            <div class="flex items-center gap-1 text-[#16181D] font-bold text-[10px]">
-              <iconify-icon icon="lucide:trending-up" width="12"></iconify-icon>
-              12.5%
-            </div>
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 auth-container">
+    
+    <!-- Auth Card -->
+    <div class="w-full max-w-[448px] bg-white rounded-xl shadow-xl overflow-hidden relative">
+      <!-- Top Accent Bar -->
+      <div class="h-1.5 w-full bg-[#0D9488]"></div>
+      
+      <div class="p-8 sm:p-10">
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center mb-8">
+          <div class="mb-4">
+            <img src="./assets/IMG_2.svg" alt="Key" class="w-8 h-8">
           </div>
-          <p class="text-[10px] uppercase tracking-wider font-semibold text-[#575E6B] mb-1 text-roboto">Total Balance</p>
-          <h3 class="text-2xl font-bold">$54,240.12</h3>
+          <h1 class="text-2xl font-bold text-[#16181D] tracking-tight mb-2">Sign In to Pockt</h1>
+          <p class="text-sm text-[#575E6B] font-['Roboto']">Access your business treasury and cash flow tools.</p>
         </div>
 
-        <!-- Monthly Inflow -->
-        <div class="bg-white p-6 rounded-xl card-shadow">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-9 h-9 bg-[#0B2545]/5 rounded-lg flex items-center justify-center">
-              <iconify-icon icon="lucide:arrow-up-right" class="text-[#0B2545]" width="20"></iconify-icon>
-            </div>
-            <div class="flex items-center gap-1 text-[#16181D] font-bold text-[10px]">
-              <iconify-icon icon="lucide:trending-up" width="12"></iconify-icon>
-              8.2%
-            </div>
-          </div>
-          <p class="text-[10px] uppercase tracking-wider font-semibold text-[#575E6B] mb-1 text-roboto">Monthly Inflow</p>
-          <h3 class="text-2xl font-bold">$18,450.00</h3>
-        </div>
-
-        <!-- Monthly Outflow -->
-        <div class="bg-white p-6 rounded-xl card-shadow">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-9 h-9 bg-[#0B2545]/5 rounded-lg flex items-center justify-center">
-              <iconify-icon icon="lucide:arrow-down-left" class="text-[#0B2545]" width="20"></iconify-icon>
-            </div>
-            <div class="flex items-center gap-1 bg-[#D32F2F]/10 text-[#D32F2F] px-2 py-0.5 rounded-full font-bold text-[10px]">
-              <iconify-icon icon="lucide:trending-down" width="12" class="mr-0.5"></iconify-icon>
-              2.4%
-            </div>
-          </div>
-          <p class="text-[10px] uppercase tracking-wider font-semibold text-[#575E6B] mb-1 text-roboto">Monthly Outflow</p>
-          <h3 class="text-2xl font-bold">$12,120.45</h3>
-        </div>
-
-        <!-- Net Cash Flow -->
-        <div class="bg-white p-6 rounded-xl card-shadow">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-9 h-9 bg-[#0B2545]/5 rounded-lg flex items-center justify-center">
-              <iconify-icon icon="lucide:zap" class="text-[#0B2545]" width="20"></iconify-icon>
-            </div>
-            <div class="flex items-center gap-1 text-[#16181D] font-bold text-[10px]">
-              <iconify-icon icon="lucide:trending-up" width="12"></iconify-icon>
-              5.1%
-            </div>
-          </div>
-          <p class="text-[10px] uppercase tracking-wider font-semibold text-[#575E6B] mb-1 text-roboto">Net Cash Flow</p>
-          <h3 class="text-2xl font-bold">$6,329.55</h3>
-        </div>
-      </div>
-
-      <!-- Charts & Actions Section -->
-      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
-        <!-- Cash Flow Trend -->
-        <div class="xl:col-span-2 bg-white p-6 rounded-xl card-shadow">
-          <div class="flex justify-between items-center mb-1">
-            <h2 class="text-lg font-bold">Cash Flow Trend</h2>
-            <span class="bg-[#0B2545]/5 text-[#0B2545] text-[10px] font-bold px-2.5 py-1 rounded-full text-roboto">REAL-TIME</span>
-          </div>
-          <p class="text-sm text-[#575E6B] mb-8 text-roboto">Visualizing your daily liquidity over the past month</p>
-          <div class="relative h-64 w-full">
-            <img src="./assets/IMG_20.svg" class="w-full h-full object-contain" alt="Cash Flow Chart">
-          </div>
-        </div>
-
-        <!-- Quick Actions & Security -->
-        <div class="space-y-6">
-          <div class="bg-white p-6 rounded-xl card-shadow">
-            <h2 class="text-sm font-bold mb-4">Quick Actions</h2>
-            <div class="space-y-3">
-              <button class="w-full flex items-center p-3 border border-[#f3f4f6] rounded-xl hover:bg-gray-50 group">
-                <div class="w-9 h-9 bg-[#F0FDFA] rounded-lg flex items-center justify-center mr-3">
-                  <iconify-icon icon="lucide:send-horizontal" class="text-[#0D9488]" width="18"></iconify-icon>
-                </div>
-                <div class="text-left flex-1">
-                  <p class="text-sm font-semibold">Move Money</p>
-                  <p class="text-[10px] text-[#575E6B] text-roboto">Transfers, Wires & Bill Pay</p>
-                </div>
-                <iconify-icon icon="lucide:chevron-right" class="text-[#575E6B] group-hover:translate-x-1" width="16"></iconify-icon>
-              </button>
-              <button class="w-full flex items-center p-3 border border-[#f3f4f6] rounded-xl hover:bg-gray-50 group">
-                <div class="w-9 h-9 bg-[#F0FDFA] rounded-lg flex items-center justify-center mr-3">
-                  <iconify-icon icon="lucide:file-text" class="text-[#0D9488]" width="18"></iconify-icon>
-                </div>
-                <div class="text-left flex-1">
-                  <p class="text-sm font-semibold">View Statements</p>
-                  <p class="text-[10px] text-[#575E6B] text-roboto">Download monthly reports</p>
-                </div>
-                <iconify-icon icon="lucide:chevron-right" class="text-[#575E6B] group-hover:translate-x-1" width="16"></iconify-icon>
-              </button>
-              <button class="w-full flex items-center p-3 border border-[#f3f4f6] rounded-xl hover:bg-gray-50 group">
-                <div class="w-9 h-9 bg-[#F0FDFA] rounded-lg flex items-center justify-center mr-3">
-                  <iconify-icon icon="lucide:credit-card" class="text-[#0D9488]" width="18"></iconify-icon>
-                </div>
-                <div class="text-left flex-1">
-                  <p class="text-sm font-semibold">Manage Cards</p>
-                  <p class="text-[10px] text-[#575E6B] text-roboto">Virtual & physical cards</p>
-                </div>
-                <iconify-icon icon="lucide:chevron-right" class="text-[#575E6B] group-hover:translate-x-1" width="16"></iconify-icon>
-              </button>
-            </div>
-          </div>
-
-          <div class="bg-[#C6DBF6]/10 p-4 rounded-xl border border-[#C6DBF6]/20 flex items-center gap-4">
-            <div class="w-10 h-10 bg-[#0B2545]/10 rounded-full flex items-center justify-center shrink-0">
-              <iconify-icon icon="lucide:shield-check" class="text-[#0B2545]" width="20"></iconify-icon>
-            </div>
-            <div>
-              <p class="text-[10px] font-bold text-[#0B2545] uppercase tracking-tight">Security Score: 98%</p>
-              <p class="text-[10px] text-[#0B2545]/70 text-roboto leading-tight">Your account is secured with 2FA and recent audit logs are clean.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Transactions & Forecast -->
-      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        <!-- Recent Transactions -->
-        <div class="xl:col-span-2 bg-white rounded-xl card-shadow overflow-hidden">
-          <div class="p-6 flex justify-between items-center">
-            <div>
-              <h2 class="text-lg font-bold">Recent Transactions</h2>
-              <p class="text-sm text-[#575E6B] text-roboto">Your latest financial activities</p>
-            </div>
-            <button class="text-xs font-semibold text-[#0B2545] flex items-center gap-1 hover:underline">
-              View All <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
-            </button>
-          </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left">
-              <thead class="bg-[#F9FAFB]/30 border-y border-[#f3f4f6]">
-                <tr>
-                  <th class="px-6 py-3 text-[10px] font-bold text-[#575E6B] uppercase tracking-wider text-roboto">Merchant / Entity</th>
-                  <th class="px-6 py-3 text-[10px] font-bold text-[#575E6B] uppercase tracking-wider text-roboto">Date</th>
-                  <th class="px-6 py-3 text-[10px] font-bold text-[#575E6B] uppercase tracking-wider text-roboto">Status</th>
-                  <th class="px-6 py-3 text-[10px] font-bold text-[#575E6B] uppercase tracking-wider text-roboto text-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#f3f4f6]">
-                <tr class="hover:bg-gray-50">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 bg-[#0B2545]/5 rounded flex items-center justify-center text-[10px] font-bold text-[#0B2545]">S</div>
-                      <div>
-                        <p class="text-sm font-semibold">Cloud Hosting Services</p>
-                        <p class="text-[10px] text-[#575E6B] text-roboto">Software</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-xs text-[#575E6B] text-roboto">May 28, 2024</td>
-                  <td class="px-6 py-4"><span class="text-[10px] font-medium text-[#16181D] bg-gray-100 px-2 py-1 rounded-full">Completed</span></td>
-                  <td class="px-6 py-4 text-sm font-semibold text-right">-$1,250.00</td>
-                </tr>
-                <tr class="bg-[#F9FAFB]/10 hover:bg-gray-50">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 bg-[#0B2545]/5 rounded flex items-center justify-center text-[10px] font-bold text-[#0B2545]">R</div>
-                      <div>
-                        <p class="text-sm font-semibold">Acme Corp Payout</p>
-                        <p class="text-[10px] text-[#575E6B] text-roboto">Revenue</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-xs text-[#575E6B] text-roboto">May 27, 2024</td>
-                  <td class="px-6 py-4"><span class="text-[10px] font-medium text-[#16181D] bg-gray-100 px-2 py-1 rounded-full">Completed</span></td>
-                  <td class="px-6 py-4 text-sm font-semibold text-right">+$8,400.00</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 bg-[#0B2545]/5 rounded flex items-center justify-center text-[10px] font-bold text-[#0B2545]">R</div>
-                      <div>
-                        <p class="text-sm font-semibold">Downtown Office Lease</p>
-                        <p class="text-[10px] text-[#575E6B] text-roboto">Rent</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-xs text-[#575E6B] text-roboto">May 25, 2024</td>
-                  <td class="px-6 py-4"><span class="text-[10px] font-medium text-[#16181D] bg-gray-100 px-2 py-1 rounded-full">Completed</span></td>
-                  <td class="px-6 py-4 text-sm font-semibold text-right">-$3,200.00</td>
-                </tr>
-                <tr class="bg-[#F9FAFB]/10 hover:bg-gray-50">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 bg-[#0B2545]/5 rounded flex items-center justify-center text-[10px] font-bold text-[#0B2545]">R</div>
-                      <div>
-                        <p class="text-sm font-semibold">Stripe Transfer</p>
-                        <p class="text-[10px] text-[#575E6B] text-roboto">Revenue</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-xs text-[#575E6B] text-roboto">May 24, 2024</td>
-                  <td class="px-6 py-4"><span class="text-[10px] font-medium text-[#16181D] bg-gray-100 px-2 py-1 rounded-full">Pending</span></td>
-                  <td class="px-6 py-4 text-sm font-semibold text-right">+$4,500.50</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 bg-[#0B2545]/5 rounded flex items-center justify-center text-[10px] font-bold text-[#0B2545]">E</div>
-                      <div>
-                        <p class="text-sm font-semibold">Hardware Supply Co</p>
-                        <p class="text-[10px] text-[#575E6B] text-roboto">Equipment</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-xs text-[#575E6B] text-roboto">May 22, 2024</td>
-                  <td class="px-6 py-4"><span class="text-[10px] font-medium text-[#16181D] bg-gray-100 px-2 py-1 rounded-full">Completed</span></td>
-                  <td class="px-6 py-4 text-sm font-semibold text-right">-$890.00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Cash Forecast -->
-        <div class="bg-white p-6 rounded-xl card-shadow flex flex-col">
-          <div class="flex items-center gap-2 mb-1">
-            <iconify-icon icon="lucide:circle-alert" class="text-[#16181D]" width="16"></iconify-icon>
-            <h2 class="text-sm font-bold">Cash Forecast</h2>
-          </div>
-          <p class="text-[11px] text-[#575E6B] mb-4 text-roboto">Upcoming expected flows for next 7 days</p>
-          
-          <div class="bg-white border border-[#f3f4f6] rounded-lg p-3 mb-6">
-            <p class="text-[10px] font-bold uppercase mb-1 text-roboto">Optimization Alert</p>
-            <p class="text-xs font-medium leading-tight text-roboto">Expected liquidity dip on June 2nd due to office lease and payroll.</p>
-          </div>
-
-          <div class="flex-1 space-y-5">
-            <div class="flex justify-between items-start border-b border-[#f3f4f6]/50 pb-3">
-              <div>
-                <p class="text-sm font-medium">Payroll Distribution</p>
-                <p class="text-[10px] text-[#575E6B] text-roboto">June 1, 2024</p>
-              </div>
-              <p class="text-sm font-semibold">-$8,500.00</p>
-            </div>
-            <div class="flex justify-between items-start border-b border-[#f3f4f6]/50 pb-3">
-              <div>
-                <p class="text-sm font-medium">Client Retainer: Zenith</p>
-                <p class="text-[10px] text-[#575E6B] text-roboto">June 2, 2024</p>
-              </div>
-              <p class="text-sm font-semibold">+$4,200.00</p>
-            </div>
-            <div class="flex justify-between items-start border-b border-[#f3f4f6]/50 pb-3">
-              <div>
-                <p class="text-sm font-medium">Quarterly Tax Payment</p>
-                <p class="text-[10px] text-[#575E6B] text-roboto">June 4, 2024</p>
-              </div>
-              <p class="text-sm font-semibold">-$2,150.00</p>
-            </div>
-            <div class="flex justify-between items-start pb-3">
-              <div>
-                <p class="text-sm font-medium">SaaS Subscriptions</p>
-                <p class="text-[10px] text-[#575E6B] text-roboto">June 5, 2024</p>
-              </div>
-              <p class="text-sm font-semibold">-$450.00</p>
-            </div>
-          </div>
-
-          <div class="mt-auto pt-4 border-t border-[#f3f4f6]">
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-xs font-medium text-[#575E6B] text-roboto">Estimated Net Change</span>
-              <span class="text-sm font-bold text-[#D32F2F]">-$6,900.00</span>
-            </div>
-            <button class="w-full py-2 border border-[#f3f4f6] rounded-lg text-[10px] font-medium hover:bg-gray-50 text-roboto">
-              View Detailed Projection
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Support Section -->
-      <div class="mt-16 pt-8 border-t border-[#f3f4f6] grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-sm font-bold mb-2">Need help with your account?</h3>
-          <p class="text-xs text-[#575E6B] leading-relaxed mb-4 text-roboto">Our dedicated account managers are available Mon-Fri, 9am - 6pm EST. Reach out for support regarding transactions, account limits, or wire confirmations.</p>
-          <div class="flex gap-4">
-            <button class="text-xs font-bold text-[#0D9488] hover:underline text-roboto">Contact Support</button>
-            <button class="text-xs font-bold text-[#0D9488] hover:underline text-roboto">Knowledge Base</button>
-          </div>
-        </div>
-        <div class="bg-[#F9FAFB]/30 p-4 rounded-xl flex gap-4">
-          <iconify-icon icon="lucide:shield-check" class="text-[#575E6B] shrink-0 mt-1" width="14"></iconify-icon>
+        <!-- Form -->
+        <form class="space-y-5">
           <div>
-            <p class="text-[11px] font-bold text-[#0B2545] uppercase mb-1">Banking & Compliance</p>
-            <p class="text-[10px] text-[#575E6B] leading-normal text-roboto">Pockt Finance is a financial technology company, not a bank. Banking services are provided by Cross River Bank, Member FDIC. All card services are subject to approval.</p>
+            <label class="block text-sm font-medium text-[#16181D] mb-2 font-['Roboto']">Business Email</label>
+            <div class="relative flex items-center input-focus-ring border border-[#D1D5DB] rounded-lg px-3 py-2.5 bg-white">
+              <img src="./assets/IMG_3.svg" alt="Mail" class="w-4 h-4 mr-2 opacity-60">
+              <input type="email" placeholder="name@company.com" class="w-full text-sm outline-none font-['Roboto'] placeholder:text-[#575E6B]/60">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-sm font-medium text-[#16181D] font-['Roboto']">Password</label>
+              <button type="button" class="text-xs font-medium text-[#0D9488] hover:underline">Forgot password?</button>
+            </div>
+            <div class="relative flex items-center input-focus-ring border border-[#D1D5DB] rounded-lg px-3 py-2.5 bg-white">
+              <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4 mr-2 opacity-60">
+              <input type="password" placeholder="••••••••" class="w-full text-sm outline-none font-['Roboto'] placeholder:text-[#575E6B]/60">
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-300 text-[#0D9488] focus:ring-[#0D9488]">
+            <label for="remember" class="text-xs font-medium text-[#4B5563] font-['Roboto']">Remember this device for 30 days</label>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-[#0D9488] hover:bg-[#0b7a70] text-white font-semibold rounded-lg shadow-md transition-all">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Footer of Card -->
+        <div class="mt-8 pt-6 border-t border-[#f3f4f6] text-center">
+          <p class="text-sm text-[#575E6B] font-['Roboto'] mb-4">
+            New to Pockt Finance? 
+            <button class="font-semibold text-[#0D9488] hover:underline ml-1">Create an account</button>
+          </p>
+          
+          <div class="flex items-center justify-center gap-6 opacity-60 mb-6">
+            <div class="flex items-center gap-1.5">
+              <img src="./assets/IMG_5.svg" alt="Shield" class="w-4 h-4">
+              <span class="text-[10px] font-bold tracking-wider uppercase text-[#16181D]">MFA Protected</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="./assets/IMG_4.svg" alt="Lock" class="w-4 h-4">
+              <span class="text-[10px] font-bold tracking-wider uppercase text-[#16181D]">256-Bit SSL</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-[#E5E7EB]/50">
+            <p class="text-[10px] leading-relaxed text-[#6B7280] font-medium uppercase tracking-tight">
+              Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.
+            </p>
           </div>
         </div>
       </div>
-    </main>
-  </div>
-
-  <!-- Bottom Footer -->
-  <footer class="w-full bg-white border-t border-[#f3f4f6] py-6 px-4 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-4">
-      <span class="text-xs text-[#575E6B] text-roboto">© 2024 Pockt Finance</span>
-      <span class="text-xs text-[#575E6B] font-medium italic text-roboto">"The pocket-sized CFO."</span>
     </div>
-    <p class="text-[10px] text-[#575E6B] text-center max-w-2xl text-roboto">Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.</p>
-    <div class="flex items-center gap-4">
-      <button class="text-xs text-[#575E6B] hover:underline text-roboto">Terms & Privacy</button>
-      <button class="text-xs text-[#575E6B] hover:underline text-roboto">GDPR</button>
+
+    <!-- Secondary Links -->
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full max-w-[448px]">
+      <a href="#" class="flex-1 bg-white/50 border border-[#E5E7EB] rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-white transition-colors">
+        <div class="w-8 h-8 bg-[#f3f4f6] rounded-full flex items-center justify-center">
+          <img src="./assets/IMG_5.svg" alt="Privacy" class="w-4 h-4">
+        </div>
+        <span class="text-xs font-semibold text-[#16181D]">Privacy Policy</span>
+      </a>
+      <a href="#" class="flex-1 bg-white/50 border border-[#E5E7EB] rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-white transition-colors">
+        <div class="w-8 h-8 bg-[#f3f4f6] rounded-full flex items-center justify-center">
+          <img src="./assets/IMG_6.svg" alt="Support" class="w-4 h-4">
+        </div>
+        <span class="text-xs font-semibold text-[#16181D]">Support Center</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#0B2545] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <!-- Brand Column -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+              <img src="./assets/IMG_1.svg" alt="Logo" class="w-5.5 h-5.5">
+            </div>
+            <span class="text-xl font-bold font-['Inter']">Pockt Finance</span>
+          </div>
+          <p class="text-[#CBD5E1] text-sm italic">"The pocket-sized CFO."</p>
+          <div class="flex items-center gap-2 text-[#94A3B8] text-sm">
+            <img src="./assets/IMG_7.svg" alt="Globe" class="w-4 h-4">
+            <span>United States (English)</span>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div>
+          <h4 class="text-[#2DD4BF] font-bold mb-6">Products</h4>
+          <ul class="space-y-3 text-[#CBD5E1] text-sm">
+            <li><a href="#" class="footer-link-hover block">Pockt Change</a></li>
+            <li><a href="#" class="footer-link-hover block">Pockt Money</a></li>
+            <li><a href="#" class="footer-link-hover block">Pockt Folio</a></li>
+            <li><a href="#" class="footer-link-hover block">Pockt Flux</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4 class="text-[#2DD4BF] font-bold mb-6">Resources</h4>
+          <ul class="space-y-3 text-[#CBD5E1] text-sm">
+            <li><a href="#" class="footer-link-hover block">Pricing</a></li>
+            <li><a href="#" class="footer-link-hover block">Help Center</a></li>
+            <li><a href="#" class="footer-link-hover block">API Docs</a></li>
+            <li><a href="#" class="footer-link-hover block">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h4 class="text-[#2DD4BF] font-bold mb-6">Legal</h4>
+          <ul class="space-y-3 text-[#CBD5E1] text-sm">
+            <li><a href="#" class="footer-link-hover block">Terms of Service</a></li>
+            <li><a href="#" class="footer-link-hover block">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link-hover block">GDPR Compliance</a></li>
+            <li><a href="#" class="footer-link-hover block">Cookie Settings</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Footer -->
+      <div class="pt-8 border-t border-[#334155] text-center">
+        <p class="text-[#94A3B8] text-[12px] leading-relaxed max-w-2xl mx-auto">
+          Pockt Finance is a FinTech company. Banking services provided by Cross River Bank | Member FDIC | Equal Housing Lender.<br>
+          By continuing you agree to the Terms & Privacy.
+        </p>
+      </div>
     </div>
   </footer>
 
