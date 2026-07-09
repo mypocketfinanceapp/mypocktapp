@@ -3,46 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pockt Finance - The pocket-sized CFO</title>
+  <title>Pockt Finance | Help & Support</title>
+  
+  <!-- Tailwind CSS v4 -->
   <script src="./tailwindcss.js"></script>
+  
+  <!-- Iconify Web Component -->
   <script src="./iconify-icon.min.js"></script>
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" type="text/css" rel="stylesheet">
+
   <style>
     body {
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      color: #353940;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      color: #1e293b;
+      background-color: #ffffff;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: "Plus Jakarta Sans", "Outfit", ui-sans-serif, system-ui, sans-serif;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.2;
-      color: #0f172a;
+      color: #0B2545;
     }
 
-    .text-balance {
-      text-wrap: balance;
-    }
-
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .hero-gradient {
-      background: radial-gradient(circle at top right, rgba(23, 162, 168, 0.15), transparent),
-                  #0B2545;
-    }
-
-    .mask-fade-edge {
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    .font-outfit {
+      font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
     }
 
     * {
@@ -53,383 +44,404 @@
       width: 8px;
       height: 8px;
     }
-
     ::-webkit-scrollbar-track {
-      background: #f8fafc;
+      background: #f1f5f9;
     }
-
     ::-webkit-scrollbar-thumb {
       background: #cbd5e1;
-      border-radius: 100px;
+      border-radius: 4px;
     }
-
     ::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
 
-    @layer base {
-      button, a {
-        cursor: pointer;
-      }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .input-focus-ring:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(23, 162, 168, 0.2);
+      border-color: #17A2A8;
+    }
+
+    .card-hover-effect:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     }
   </style>
 </head>
-<body class="bg-white">
+<body class="min-h-screen flex flex-col">
 
-  <!-- Navigation -->
-  <header class="sticky top-0 z-50 glass-panel border-b border-[#DDE0E4]">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
-            <img src="./assets/IMG_1.svg" class="w-5.5 h-5.5" alt="Logo">
-          </div>
-          <span class="text-xl font-bold text-[#0B2545]">Pockt Finance</span>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-[#F4F4F6]">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-16 h-16 flex items-center justify-between">
+      <!-- Logo Section -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-[#0B2545] rounded-md flex items-center justify-center">
+          <img src="./assets/IMG_1.svg" alt="Logo Icon" class="w-[22px] h-[22px]">
         </div>
-        <div class="hidden md:flex items-center gap-1">
-          <a href="#" class="px-4 py-2 text-sm font-medium text-[#0B2545] hover:bg-slate-50 rounded-md">Home</a>
-          <a href="#" class="px-4 py-2 text-sm font-medium text-[#16191D] hover:bg-slate-50 rounded-md">Products</a>
-          <a href="#" class="px-4 py-2 text-sm font-medium text-[#16191D] hover:bg-slate-50 rounded-md">About</a>
+        <div class="flex flex-col">
+          <span class="text-[20px] leading-none font-bold text-[#0B2545]">Pockt Finance</span>
+          <span class="text-[10px] font-medium text-[#353940] tracking-tight">The pocket-sized CFO.</span>
         </div>
       </div>
-      <div class="flex items-center gap-4">
-        <button class="px-4 py-2 text-sm font-medium text-[#575F6B] hover:text-[#0B2545]">Sign in</button>
-        <button class="px-6 py-2.5 text-sm font-medium text-white bg-[#17A2A8] rounded-md hover:bg-[#148e93] shadow-sm">Get started</button>
-        <button class="md:hidden text-[#0B2545]">
-          <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-2">
+        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
+          <img src="./assets/IMG_2.svg" class="w-4 h-4" alt="Dashboard"> Dashboard
         </button>
+        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
+          <img src="./assets/IMG_3.svg" class="w-4 h-4" alt="Move Money"> Move Money
+        </button>
+        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
+          <img src="./assets/IMG_4.svg" class="w-4 h-4" alt="Cards"> Cards
+        </button>
+        <button class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F4F4F6] text-sm font-medium text-[#17191C]">
+          <img src="./assets/IMG_5.svg" class="w-4 h-4" alt="Statements"> Statements
+        </button>
+      </nav>
+
+      <!-- Search & Profile -->
+      <div class="flex items-center gap-4">
+        <div class="hidden xl:flex items-center bg-[#F4F4F6] rounded-xl px-3 py-1.5 w-64">
+          <img src="./assets/IMG_7.svg" class="w-4 h-4 mr-2 opacity-60" alt="Search">
+          <input type="text" placeholder="Search transactions..." class="bg-transparent border-none outline-none text-sm w-full placeholder:text-[#353940]">
+        </div>
+        
+        <div class="flex items-center gap-4 border-l border-[#F4F4F6] pl-4">
+          <div class="relative">
+            <img src="./assets/IMG_8.svg" class="w-5 h-5 text-[#17191C]" alt="Notifications">
+            <div class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#DC3545] border-2 border-white rounded-full"></div>
+          </div>
+          
+          <div class="hidden md:flex flex-col items-end">
+            <span class="text-sm font-medium text-[#17191C]">Acme Corp</span>
+            <span class="text-[12px] text-[#353940]">Admin</span>
+          </div>
+          
+          <div class="relative">
+            <img src="./assets/IMG_6.webp" class="w-9 h-9 rounded-full object-cover border border-[#F4F4F6]" alt="User Avatar">
+            <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#1dd75b] border-2 border-white rounded-full"></div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="flex-grow">
     <!-- Hero Section -->
-    <section class="hero-gradient relative overflow-hidden py-20 lg:py-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-        <div class="space-y-8">
-          <div class="inline-flex items-center px-4 py-1 bg-[#17A2A8] rounded-full">
-            <span class="text-xs font-bold text-white uppercase tracking-wide">Business Banking Redefined</span>
-          </div>
-          <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
-            The <span class="text-[#17A2A8]">pocket-sized</span> CFO for your business.
-          </h1>
-          <p class="text-lg text-[#379ae6] max-w-xl leading-relaxed">
-            Automate your cash flow, manage team spending, and gain real-time insights. Pockt is the financial operating system built for modern founders.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <button class="px-8 py-4 bg-[#17A2A8] text-white font-bold rounded-md shadow-lg hover:bg-[#148e93] transition-transform hover:-translate-y-0.5">
-              Get started for free
-            </button>
-            <button class="px-8 py-4 bg-white text-[#323842] font-medium rounded-md border border-[#64748B] hover:bg-slate-50 transition-transform hover:-translate-y-0.5">
-              Watch product demo
-            </button>
-          </div>
-          <div class="flex items-center gap-8 pt-4">
-            <div class="flex items-center gap-2 text-[#CBD5E1] text-sm font-medium">
-              <img src="./assets/IMG_7.svg" class="w-5 h-5 text-[#17A2A8]" alt="Check">
-              No hidden fees
-            </div>
-            <div class="flex items-center gap-2 text-[#CBD5E1] text-sm font-medium">
-              <img src="./assets/IMG_7.svg" class="w-5 h-5 text-[#17A2A8]" alt="Check">
-              FDIC Insured
-            </div>
+    <section class="bg-[#F2F7FD] py-16 px-4 border-b border-[#F4F4F6]">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">How can we help?</h1>
+        <p class="text-lg text-[#353940] mb-8">Search our knowledge base or reach out to our team of specialists.</p>
+        
+        <div class="relative max-w-3xl mx-auto mb-6">
+          <div class="flex items-center bg-white border border-[#DEDFE3] rounded-xl shadow-sm px-4 py-4">
+            <img src="./assets/IMG_7.svg" class="w-5 h-5 mr-3 opacity-60" alt="Search">
+            <input type="text" placeholder="Search for answers (e.g., 'Reset MFA', 'Card limits', 'Wire transfers')..." class="w-full outline-none text-sm md:text-base">
           </div>
         </div>
-
-        <!-- Hero Dashboard Mockup -->
-        <div class="relative">
-          <!-- Floating Revenue Pulse -->
-          <div class="absolute -top-10 -right-4 lg:-right-12 z-20 bg-white p-4 rounded-xl shadow-2xl border border-[#F1F5F9] flex items-center gap-4 animate-bounce-slow">
-            <div class="w-10 h-10 bg-[#CCFBF1] rounded-full flex items-center justify-center">
-              <img src="./assets/IMG_2.svg" class="w-5 h-5 text-[#0D9488]" alt="Up">
-            </div>
-            <div>
-              <p class="text-[10px] font-bold text-[#575F6B] uppercase tracking-wider">Revenue Pulse</p>
-              <p class="text-sm font-bold text-[#0B2545]">+22% weekly</p>
-            </div>
-          </div>
-
-          <!-- Main Dashboard Card -->
-          <div class="bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200">
-            <div class="bg-[#F8FAFC]/50 px-6 py-4 border-b border-[#DDE0E4] flex items-center justify-between">
-              <div class="flex gap-1.5">
-                <div class="w-3 h-3 bg-[#F87171] rounded-full"></div>
-                <div class="w-3 h-3 bg-[#FBBF24] rounded-full"></div>
-                <div class="w-3 h-3 bg-[#34D399] rounded-full"></div>
-              </div>
-              <div class="px-3 py-1 bg-white border border-[#DDE0E4] rounded-full">
-                <span class="text-[10px] font-bold text-[#16191D]">Live Operations</span>
-              </div>
-            </div>
-            <div class="p-6 space-y-6">
-              <div class="flex justify-between items-end">
-                <div>
-                  <p class="text-xs font-medium text-[#575F6B] uppercase tracking-tight">Available Balance</p>
-                  <h3 class="text-3xl font-bold text-[#0B2545] mt-1">$142,384.50</h3>
-                </div>
-                <div class="flex items-center gap-1 text-[#059669] text-xs font-bold">
-                  <img src="./assets/IMG_3.svg" class="w-3 h-3" alt="Activity">
-                  +12.4% vs last month
-                </div>
-              </div>
-              <div class="w-full">
-                <img src="./assets/IMG_4.svg" class="w-full h-auto" alt="Chart">
-              </div>
-              <div class="pt-4 border-t border-[#DDE0E4] flex items-center justify-between">
-                <div class="flex -space-x-2">
-                  <img src="./assets/IMG_5.webp" class="w-6 h-6 rounded-full border-2 border-white" alt="User">
-                  <img src="./assets/IMG_6.webp" class="w-6 h-6 rounded-full border-2 border-white" alt="User">
-                  <div class="w-6 h-6 rounded-full bg-[#F1F5F9] border-2 border-white flex items-center justify-center text-[8px] font-bold text-[#64748B]">
-                    +4
-                  </div>
-                </div>
-                <span class="text-[10px] italic text-[#575F6B]">Last update: 2 mins ago</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Decorative Background Element -->
-      <div class="absolute -bottom-48 -left-24 w-96 h-96 bg-[#F2B705]/5 rounded-full blur-[64px]"></div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="bg-[#F8FAFC] border-y border-[#DDE0E4] py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-        <span class="text-sm font-bold text-[#64748B] uppercase tracking-[0.2em]">Trusted by banking partners</span>
-        <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all">
-          <img src="./assets/IMG_8.webp" class="h-8 w-auto object-contain" alt="Partner">
-          <img src="./assets/IMG_9.webp" class="h-8 w-auto object-contain" alt="Partner">
-          <img src="./assets/IMG_10.webp" class="h-8 w-auto object-contain" alt="Partner">
-          <img src="./assets/IMG_11.webp" class="h-8 w-auto object-contain" alt="Partner">
+        
+        <div class="flex flex-wrap justify-center items-center gap-3 text-sm">
+          <span class="uppercase tracking-widest text-[12px] font-semibold text-[#353940] mr-2">Popular:</span>
+          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Account Security</span>
+          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Wire Deadlines</span>
+          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">MFA Issues</span>
+          <span class="bg-[#F4F4F6] px-3 py-1 rounded-full font-semibold text-[#1E2024] cursor-pointer hover:bg-gray-200">Ordering Cards</span>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center mb-20">
-        <h2 class="text-4xl font-bold text-[#0B2545] mb-4">Everything your finance team needs</h2>
-        <p class="text-lg text-[#575F6B] max-w-2xl mx-auto">
-          Ditch the spreadsheets. Pockt Finance brings your entire back-office into one seamless experience.
-        </p>
-      </div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Feature 1 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="flex justify-between items-start mb-8">
-            <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center">
-              <img src="./assets/IMG_12.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
+    <!-- Contact Options -->
+    <section class="max-w-[1440px] mx-auto px-4 lg:px-16 py-16">
+      <h2 class="text-2xl font-bold mb-8">Get in touch</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Live Chat -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
+          <div class="p-6 flex-grow">
+            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
+              <img src="./assets/IMG_9.svg" class="w-6 h-6" alt="Chat">
             </div>
-            <span class="px-2.5 py-0.5 bg-[#F0FDFA] text-[#0F766E] text-xs font-semibold rounded-full">Popular</span>
+            <h3 class="text-xl font-bold mb-2">Live Chat</h3>
+            <p class="text-sm text-[#353940] mb-4">Instant messaging with our support specialists.</p>
+            <p class="text-sm text-[#353940] mb-8 leading-relaxed">Best for quick questions about your account, transactions, or card issues.</p>
+            <button class="w-full bg-[#17A2A8] text-white font-semibold py-2.5 rounded-xl hover:bg-[#148e93]">Start a New Chat</button>
           </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">Real-time Cashflow</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            Monitor every dollar in and out as it happens. Predict runway with automated forecasting that updates with every transaction.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
+          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex justify-between text-[12px] text-[#353940]">
+            <span>Specialists Online</span>
+            <span>Wait: ~3 mins</span>
+          </div>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center mb-8">
-            <img src="./assets/IMG_14.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
-          </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">Automated Compliance</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            Keep your books audit-ready. Pockt automatically categorizes expenses and flags potential tax deductions for you.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center mb-8">
-            <img src="./assets/IMG_15.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
-          </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">Corporate Cards</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            Issue unlimited virtual and physical cards. Set smart limits and track team spending in one centralized dashboard.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center mb-8">
-            <img src="./assets/IMG_16.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
-          </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">Revenue Operations</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            Connect your sales tools to see true LTV, churn, and gross margins without lifting a finger. Data-driven growth.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center mb-8">
-            <img src="./assets/IMG_17.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
-          </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">CFO in your Pocket</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            The mobile app provides instant approvals, receipt capture, and financial alerts so you're always in control.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-          <div class="flex justify-between items-start mb-8">
-            <div class="w-12 h-12 bg-[#F8FAFC] rounded-lg flex items-center justify-center">
-              <img src="./assets/IMG_18.svg" class="w-6 h-6 text-[#0B2545]" alt="Icon">
+        <!-- Email Support -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
+          <div class="p-6 flex-grow">
+            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
+              <img src="./assets/IMG_10.svg" class="w-6 h-6" alt="Email">
             </div>
-            <span class="px-2.5 py-0.5 bg-[#F0FDFA] text-[#0F766E] text-xs font-semibold rounded-full">New</span>
+            <h3 class="text-xl font-bold mb-2">Email Support</h3>
+            <p class="text-sm text-[#353940] mb-6">Send us a detailed message about your inquiry.</p>
+            
+            <div class="space-y-3 mb-6">
+              <input type="text" placeholder="Subject" class="w-full bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring">
+              <div class="flex gap-2">
+                <input type="text" placeholder="Ticket ID (Optional)" class="flex-1 bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring">
+                <div class="w-1/3 bg-[#F4F4F6]/50 border border-[#F4F4F6] rounded-xl px-3 py-2 text-sm text-[#353940] flex items-center">Urgent</div>
+              </div>
+              <textarea placeholder="How can we help?" rows="3" class="w-full bg-[#F4F4F6]/50 border border-[#DEDFE3] rounded-xl px-3 py-2 text-sm input-focus-ring resize-none"></textarea>
+            </div>
+            <button class="w-full border border-[#0B2545] text-[#0B2545] font-semibold py-2.5 rounded-xl hover:bg-[#0B2545] hover:text-white">Send Message</button>
           </div>
-          <h3 class="text-xl font-bold text-[#0B2545] mb-4">Deep Analytics</h3>
-          <p class="text-sm text-[#575F6B] leading-relaxed mb-8">
-            Custom reports for investors and stakeholders generated in seconds. Transparency that builds trust.
-          </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#17A2A8] hover:gap-3 transition-all">
-            Learn more <img src="./assets/IMG_13.svg" class="w-4 h-4" alt="Arrow">
-          </a>
+          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex items-center gap-2 text-[12px] text-[#353940]">
+            <img src="./assets/IMG_12.svg" class="w-3 h-3" alt="Clock">
+            <span>Avg. response: 4-6 hours</span>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Testimonial Section -->
-    <section class="py-24 bg-[#F8FAFC]">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="bg-[#0B2545] rounded-2xl overflow-hidden relative p-8 lg:p-16 grid lg:grid-cols-2 gap-12 items-center">
-          <!-- Glow effect -->
-          <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#17A2A8]/10 rounded-full blur-[100px]"></div>
-          
-          <div class="space-y-8 relative z-10">
-            <div class="flex text-[#F2B705] text-2xl">★★★★★</div>
-            <blockquote class="text-3xl lg:text-4xl font-bold text-white leading-tight">
-              "Pockt saved us over 20 hours a week on manual bookkeeping. It's truly like having a CFO in my pocket."
-            </blockquote>
-            <div class="flex items-center gap-4">
-              <img src="./assets/IMG_19.webp" class="w-14 h-14 rounded-full object-cover" alt="Sarah Chen">
-              <div>
-                <p class="text-lg font-bold text-white">Sarah Chen</p>
-                <p class="text-[#94A3B8]">CEO at Lumina Web Solutions</p>
+        <!-- Phone Support -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#F4F4F6] flex flex-col card-hover-effect overflow-hidden">
+          <div class="p-6 flex-grow">
+            <div class="w-10 h-10 bg-[#F2F7FD] rounded-xl flex items-center justify-center mb-6">
+              <img src="./assets/IMG_13.svg" class="w-6 h-6" alt="Phone">
+            </div>
+            <h3 class="text-xl font-bold mb-2">Phone Support</h3>
+            <p class="text-sm text-[#353940] mb-6">Speak directly with our business banking team.</p>
+            
+            <div class="space-y-3">
+              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3 relative">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">North America</span>
+                <p class="text-sm font-semibold text-[#17191C] mt-1">+1 (888) 555-POCKT</p>
+                <span class="absolute top-3 right-3 text-[12px] font-semibold border border-[#F4F4F6] px-2 py-0.5 rounded-full">Priority</span>
+              </div>
+              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">Europe & UK</span>
+                <p class="text-sm font-semibold text-[#17191C] mt-1">+44 20 7946 0001</p>
+              </div>
+              <div class="bg-[#F4F4F6]/20 border border-[#F4F4F6] rounded-xl p-3">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#353940]">Asia Pacific</span>
+                <p class="text-sm font-semibold text-[#17191C] mt-1">+65 6789 0123</p>
               </div>
             </div>
           </div>
-
-          <div class="grid grid-cols-2 gap-4 relative z-10">
-            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-xl">
-              <p class="text-4xl font-bold text-[#17A2A8] mb-2">20h+</p>
-              <p class="text-sm text-[#CBD5E1]">Saved per week</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-xl">
-              <p class="text-4xl font-bold text-[#F2B705] mb-2">100%</p>
-              <p class="text-sm text-[#CBD5E1]">Tax Compliance</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-xl">
-              <p class="text-4xl font-bold text-white mb-2">12k</p>
-              <p class="text-sm text-[#CBD5E1]">Active Businesses</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-xl">
-              <p class="text-4xl font-bold text-[#17A2A8] mb-2">24/7</p>
-              <p class="text-sm text-[#CBD5E1]">Expert Support</p>
-            </div>
+          <div class="bg-[#F4F4F6]/30 px-6 py-4 flex items-center gap-2 text-[12px] text-[#353940]">
+            <img src="./assets/IMG_14.svg" class="w-3 h-3" alt="Globe">
+            <span>Monday - Friday, 9AM - 6PM EST</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-32 bg-white text-center">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 space-y-8">
-        <h2 class="text-5xl lg:text-6xl font-extrabold text-[#0B2545] tracking-tight">Ready to take control?</h2>
-        <p class="text-xl text-[#575F6B] leading-relaxed">
-          Join thousands of businesses already scaling faster with Pockt Finance. No credit card required. Setup takes less than 10 minutes.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-          <button class="px-12 py-5 bg-[#17A2A8] text-white text-lg font-bold rounded-md shadow-xl hover:bg-[#148e93] transition-all hover:-translate-y-1">
-            Get Started Now
-          </button>
-          <button class="px-12 py-5 bg-white text-[#0B2545] text-lg font-semibold rounded-md border border-[#0B2545] hover:bg-slate-50 transition-all hover:-translate-y-1">
-            Contact Sales
+    <!-- Browse by Category -->
+    <section class="max-w-[1440px] mx-auto px-4 lg:px-16 mb-16">
+      <div class="bg-[#F9FAFA] rounded-2xl border border-[#F4F4F6] p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+          <div>
+            <h2 class="text-2xl font-bold mb-2">Browse by Category</h2>
+            <p class="text-[#353940]">Self-service resources to help you manage your business faster.</p>
+          </div>
+          <button class="flex items-center gap-2 text-[#0B2545] font-semibold hover:underline">
+            Visit Help Center <img src="./assets/IMG_15.svg" class="w-4 h-4" alt="Arrow">
           </button>
         </div>
-        <p class="text-sm italic text-[#94A3B8] pt-4">
-          Trusted by Series A startups and growing SMBs worldwide.
-        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Category Cards -->
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_16.svg" class="w-4 h-4" alt="Security">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Account & Security</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_4.svg" class="w-4 h-4" alt="Cards">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Cards & Spending</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_14.svg" class="w-4 h-4" alt="Global">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Global Transfers</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_17.svg" class="w-4 h-4" alt="Verification">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Business Verification</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_5.svg" class="w-4 h-4" alt="Tax">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Tax Reporting</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_18.svg" class="w-4 h-4" alt="API">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">API Documentation</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_19.svg" class="w-4 h-4" alt="Billing">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Billing & Fees</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+
+          <div class="bg-white border border-[#F4F4F6] rounded-xl p-4 flex items-center justify-between card-hover-effect cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-[#F4F4F6] rounded flex items-center justify-center">
+                <img src="./assets/IMG_16.svg" class="w-4 h-4" alt="Fraud">
+              </div>
+              <span class="text-sm font-medium text-[#17191C]">Fraud Prevention</span>
+            </div>
+            <img src="./assets/IMG_15.svg" class="w-4 h-4 opacity-40" alt="Arrow">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold text-center mb-12">Top Frequently Asked Questions</h2>
+      
+      <div class="space-y-4">
+        <!-- FAQ Item 1 (Open) -->
+        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
+          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
+            <span class="text-base font-semibold text-[#17191C]">How do I increase my daily wire transfer limits?</span>
+            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
+          </button>
+          <div class="px-6 pb-6">
+            <p class="text-sm text-[#353940] leading-relaxed">
+              Daily wire limits can be adjusted within the <span class="text-[#0B2545] font-medium">Settings</span> panel of your business profile. Note that increases above $100,000 may require a brief phone verification with our compliance team for security purposes.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
+          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
+            <span class="text-base font-semibold text-[#17191C]">What should I do if my physical card is lost or stolen?</span>
+            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
+          </button>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
+          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
+            <span class="text-base font-semibold text-[#17191C]">Can I add multiple users with different permission levels?</span>
+            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
+          </button>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="bg-white border border-[#F4F4F6] rounded-xl shadow-sm overflow-hidden">
+          <button class="w-full px-6 py-4 flex items-center justify-between text-left">
+            <span class="text-base font-semibold text-[#17191C]">Is Pockt Finance available internationally?</span>
+            <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Expand">
+          </button>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#0B2545] text-white pt-20 pb-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-      <div class="space-y-6">
-        <div class="flex items-center gap-2">
-          <img src="./assets/IMG_1.svg" class="w-7 h-7" alt="Logo">
-          <span class="text-2xl font-bold">Pockt Finance</span>
+  <footer class="bg-white border-t border-[#F4F4F6] pt-16 pb-8">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <!-- Brand Column -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="./assets/IMG_1.svg" class="w-5 h-5" alt="Logo">
+            <span class="text-lg font-bold text-[#0B2545]">Pockt Finance</span>
+          </div>
+          <p class="text-sm text-[#17191C] leading-relaxed max-w-xs">
+            Comprehensive financial management for growing businesses.
+          </p>
         </div>
-        <p class="text-[#CBD5E1] italic">"The pocket-sized CFO."</p>
-        <div class="flex items-center gap-2 text-[#94A3B8] text-xs">
-          <img src="./assets/IMG_20.svg" class="w-4 h-4" alt="Globe">
-          Region: North America (USD)
+
+        <!-- Links Columns -->
+        <div>
+          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Product</h4>
+          <ul class="space-y-3 text-sm text-[#353940]">
+            <li><a href="#" class="hover:text-[#0B2545]">Dashboard</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">Move Money</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">Cards</a></li>
+          </ul>
         </div>
-      </div>
 
-      <div>
-        <h4 class="text-base font-semibold mb-6">Product</h4>
-        <ul class="space-y-4 text-sm text-[#CBD5E1]">
-          <li><a href="#" class="hover:text-white transition-colors">Pockt Change</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Pockt Money</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Pockt Folio</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Pockt Flux</a></li>
-        </ul>
-      </div>
+        <div>
+          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Company</h4>
+          <ul class="space-y-3 text-sm text-[#353940]">
+            <li><a href="#" class="hover:text-[#0B2545]">Contact Support</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">About Us</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">Press</a></li>
+          </ul>
+        </div>
 
-      <div>
-        <h4 class="text-base font-semibold mb-6">Company</h4>
-        <ul class="space-y-4 text-sm text-[#CBD5E1]">
-          <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Press</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-base font-semibold mb-6">Compliance</h4>
-        <ul class="space-y-4 text-sm text-[#CBD5E1]">
-          <li><a href="#" class="hover:text-white transition-colors">Legal Center</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Terms & Privacy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">GDPR Policy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 border-t border-[#334155] pt-10">
-      <div class="flex flex-col lg:flex-row justify-between gap-8">
-        <p class="text-xs text-[#94A3B8] max-w-3xl leading-relaxed">
-          By continuing you agree to the Terms & Privacy. Pockt Finance is a financial technology company, not a bank. Banking services provided by Cross River Bank, Member FDIC. The Pockt Visa® Debit Card is issued by Cross River Bank pursuant to a license from Visa U.S.A. Inc. and may be used everywhere Visa debit cards are accepted.
-        </p>
-        <div class="flex items-center gap-2 text-[#64748B] text-xs font-bold uppercase tracking-widest">
-          <img src="./assets/IMG_14.svg" class="w-5 h-5 opacity-50" alt="Shield">
-          FDIC Insured
+        <div>
+          <h4 class="text-sm font-semibold text-[#17191C] mb-6">Support</h4>
+          <ul class="space-y-3 text-sm text-[#353940]">
+            <li><a href="#" class="hover:text-[#0B2545]">Help Center</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">API Docs</a></li>
+            <li><a href="#" class="hover:text-[#0B2545]">Community</a></li>
+          </ul>
         </div>
       </div>
-      <p class="text-xs text-[#64748B] mt-8">© 2024 Pockt Finance. All rights reserved.</p>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-[#F4F4F6] flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex flex-wrap items-center gap-6 text-[12px] text-[#353940]">
+          <span>© 2024 Pockt Finance Inc.</span>
+          <a href="#" class="hover:text-[#0B2545]">Terms & Privacy</a>
+          <a href="#" class="hover:text-[#0B2545]">GDPR</a>
+          <a href="#" class="hover:text-[#0B2545]">Security</a>
+        </div>
+        
+        <div class="flex items-center gap-4 text-[12px] text-[#353940]">
+          <div class="flex items-center gap-1.5">
+            <img src="./assets/IMG_14.svg" class="w-3 h-3" alt="Globe">
+            <span>United States (English)</span>
+            <img src="./assets/IMG_20.svg" class="w-3 h-3 opacity-60" alt="Down">
+          </div>
+          <span class="opacity-20">|</span>
+          <span class="text-[#17A2A8] font-medium italic">The pocket-sized CFO.</span>
+        </div>
+      </div>
     </div>
   </footer>
 
